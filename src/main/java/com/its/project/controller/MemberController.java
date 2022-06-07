@@ -72,4 +72,18 @@ public class MemberController {
        model.addAttribute("updateMember", memberDTO);
        return "memberPages/update";
     }
+    @PostMapping ("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO) {
+       boolean updateResult = memberService.update(memberDTO);
+       if(updateResult) {
+           return "redirect:/member/detail";
+       }else {
+           return "update-fail";
+       }
+    }
+    @GetMapping ("/delete")
+    public String delete(@RequestParam("id") Long mid ) {
+        memberService.delete(mid);
+        return "redirect:/member/detail";
+    }
 }

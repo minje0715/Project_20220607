@@ -31,4 +31,12 @@ public class MemberRepository {
     public List<MemberDTO> findAll() {
        return sql.selectList("Member.findAll");
     }
+
+    public int update(MemberDTO memberDTO) {
+       return sql.update("Member.update", memberDTO);
+    }
+
+    public void delete(Long mid) {
+        sql.delete("Member.delete", mid);
+    }
 }

@@ -20,4 +20,10 @@
     <select id="findAll" resultType="member">
         select * from member_table
     </select>
+    <update id="update" parameterType="member">
+    update member_table set memberPassword = #{memberPassword} where mid =#{mid}
+    </update>
+    <delete id="delete" parameterType="Long">
+        delete from member_table where mid=#{mid}
+    </delete>
 </mapper>

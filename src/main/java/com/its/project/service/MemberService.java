@@ -42,4 +42,17 @@ public class MemberService {
     public List<MemberDTO> findAll() {
        return memberRepository.findAll();
     }
+
+    public boolean update(MemberDTO memberDTO) {
+       int updateResult = memberRepository.update(memberDTO);
+       if(updateResult > 0) {
+           return true;
+       }else {
+           return false;
+       }
+    }
+
+    public void delete(Long mid) {
+        memberRepository.delete(mid);
+    }
 }

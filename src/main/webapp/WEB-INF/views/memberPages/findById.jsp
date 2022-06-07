@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: 민제
@@ -31,14 +32,20 @@
             <td>${member.memberBirth}</td>
             <td>${member.memberEmail}</td>
             <td>${member.memberPhone}</td>
-            <button onclick="update()"></button>
         </tr>
     </table>
+    <button onclick="update()" class="btn btn-primary">비밀번호 수정</button>
+    <button onclick="memberDelete()" class="btn btn-danger">회원 탈퇴</button>
 </div>
 </body>
 <script>
     function update() {
-        location.href = "/member/update";
+        location.href = "/member/update?id=${sessionScope.loginId}";
     }
+
+    const memberDelete = () => {
+        location.href = "/member/delete?id=${sessionScope.loginId}";
+    }
+
 </script>
 </html>
