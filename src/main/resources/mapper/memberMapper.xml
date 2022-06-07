@@ -5,25 +5,29 @@
 
 <mapper namespace="Member">
     <insert id="save" parameterType="member">
-        insert into member_table(memberId, memberPassword, memberName, memberBirth, memberEmail, memberPhone)
-        values (#{memberId}, #{memberPassword}, #{memberName}, #{memberBirth}, #{memberEmail}, #{memberPhone})
+        insert into member_table(memberId, memberPassword, memberName, memberEmail, memberPhone)
+values (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberPhone})
     </insert>
-    <select id="idCheck" parameterType="String" resultType="String">
-        select * from member_table where memberId=#{memberId}
+    <select id="duplicateCheck" parameterType="String" resultType="String">
+        select memberId from member_table where memberId=#{memberId}
     </select>
     <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberId=#{memberId}
     </select>
     <select id="findById" parameterType="Long" resultType="member">
-        select * from member_table where mid=#{mid}
+        select * from member_table where id=#{id}
     </select>
+    <update id="update" parameterType="member">
+        update member_table set memberPhone =#{memberPhone} where id=#{id}
+    </update>
     <select id="findAll" resultType="member">
         select * from member_table
     </select>
-    <update id="update" parameterType="member">
-    update member_table set memberPassword = #{memberPassword} where mid =#{mid}
-    </update>
     <delete id="delete" parameterType="Long">
-        delete from member_table where mid=#{mid}
+        delete from member_table where id =#{id}
     </delete>
+
+<!--    <delete id="delete" parameterType="Long">-->
+<!--        delete from member_table where id=#{id}-->
+<!--    </delete>-->
 </mapper>

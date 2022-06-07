@@ -17,80 +17,90 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping ("/save")
+    @GetMapping("/save")
     public String saveForm() {
         return "memberPages/save";
     }
 
-    @PostMapping ("/save")
+    @PostMapping("/save")
     public String save(@ModelAttribute MemberDTO memberDTO) {
-       boolean saveResult = memberService.save(memberDTO);
-       if(saveResult) {
-           return "memberPages/login";
-       }else {
-           return "save-fail";
-       }
+        boolean saveResult = memberService.save(memberDTO);
+        if (saveResult) {
+            return "memberPages/login";
+        } else {
+            return "save-fail";
+        }
     }
-    @PostMapping ("/duplicateCheck")
-    public @ResponseBody String idCheck(@RequestParam("memberId")String memberId) {
-       String checkResult = memberService.idCheck(memberId);
-       return checkResult;
+
+    @PostMapping("/duplicateCheck")
+    public @ResponseBody String idCheck(@RequestParam("memberId") String memberId) {
+        String checkResult = memberService.idCheck(memberId);
+        return checkResult;
     }
-    @GetMapping ("/login")
+
+    @GetMapping("/login")
     public String loginForm() {
         return "memberPages/login";
     }
-    @PostMapping ("/login")
+
+    @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
-      MemberDTO loginResult = memberService.login(memberDTO);
-      if(loginResult != null) {
-        model.addAttribute("loginMember",loginResult);
-        session.setAttribute("loginId",loginResult.getMid());
-        session.setAttribute("loginMemberId",loginResult.getMemberId());
-        return "index";
-      }else{
-          return "login-fail";
-      }
+        MemberDTO loginResult = memberService.login(memberDTO);
+        if (loginResult != null) {
+            model.addAttribute("loginMember", loginResult);
+            session.setAttribute("loginId", loginResult.getMid());
+            session.setAttribute("loginMemberId", loginResult.getMemberId());
+            return "index";
+        } else {
+            return "login-fail";
+        }
     }
-    @GetMapping ("/detail")
+
+    @GetMapping("/detail")
     public String findById(HttpSession session, Model model) {
-       Long findMember = (Long)session.getAttribute("loginId");
-       MemberDTO memberDTO = memberService.findById(findMember);
-       model.addAttribute("member", memberDTO);
-       return "memberPages/findById";
+        Long findMember = (Long) session.getAttribute("loginId");
+        MemberDTO memberDTO = memberService.findById(findMember);
+        model.addAttribute("member", memberDTO);
+        return "memberPages/findById";
     }
-    @GetMapping ("/findAll")
+
+    @GetMapping("/findAll")
     public String findAll(Model model) {
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList", memberDTOList);
         return "memberPages/findAll";
     }
-    @GetMapping ("/update")
+
+    @GetMapping("/update")
     public String updateForm(HttpSession session, Model model) {
-       Long updateId = (Long) session.getAttribute("loginId");
+        Long updateId = (Long) session.getAttribute("loginId");
         System.out.println("updateId = " + updateId);
-       MemberDTO memberDTO = memberService.findById(updateId);
+        MemberDTO memberDTO = memberService.findById(updateId);
         System.out.println("memberDTO = " + memberDTO);
-       model.addAttribute("updateMember", memberDTO);
-       return "memberPages/update";
+        model.addAttribute("updateMember", memberDTO);
+        return "memberPages/update";
     }
-    @PostMapping ("/update")
+
+    @PostMapping("/update")
     public String update(@ModelAttribute MemberDTO memberDTO) {
-       boolean updateResult = memberService.update(memberDTO);
-       if(updateResult) {
-           return "redirect:/member/detail";
-       }else {
-           return "update-fail";
-       }
+        boolean updateResult = memberService.update(memberDTO);
+        if (updateResult) {
+            return "redirect:/member/detail";
+        } else {
+            return "update-fail";
+        }
     }
-    @GetMapping ("/delete")
-    public String delete(@RequestParam("id") Long mid ) {
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") Long mid) {
         memberService.delete(mid);
         return "redirect:/member/logout";
     }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/";
     }
+
 }

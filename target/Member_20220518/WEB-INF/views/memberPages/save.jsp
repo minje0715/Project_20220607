@@ -1,11 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
-  User: 민제
-  Date: 2022-06-03
-  Time: 오전 9:59
+  User: user
+  Date: 2022-05-26
+  Time: 오후 3:05
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -33,10 +34,9 @@
     <form action="/member/save" method="post">
         <input class="form-control mb-2" type="text" name="memberId" id="memberId" placeholder="아이디"
                onblur="duplicateCheck()" required>
-        <input class="form-control mb-2" type="text" id="pw1" name="memberPassword" placeholder="비밀번호" required>
-        <input class="form-control mb-2" type="text" id="pw2" placeholder="비밀번호확인" onblur="pwCheck()" required>
-        <input class="form-control mb-2" type="text" name="memberBirth"
-               required pattern="[0-9]{8}" title="########" placeholder="생년월일">
+        <span id="id-check-result"></span>
+        <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호" required>
+        <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호확인" required>
         <input class="form-control mb-2" type="text" name="memberName" placeholder="이름" required>
         <input class="form-control mb-2" type="text" name="memberEmail" placeholder="이메일" required>
         <input class="form-control mb-2" type="tel" name="memberPhone"
@@ -48,32 +48,28 @@
 <script>
     const duplicateCheck = () => {
         const memberId = document.getElementById("memberId").value;
-
-        $.ajax ({
-            type: "post",
-            url: "/member/duplicateCheck",
-            data: {"memberId":memberId},
-            dataType: "text",
+        const idCheck = document.getElementById("id-check-result");
+        $.ajax({
+            type: "post", // 보낼타입
+            url: "/member/duplicate-check", //주소값
+            data: {"memberId": memberId}, //보낼 데이터
+            dataType: "text", //데이터 타입
             success: function (checkResult) {
-            if(checkResult == "ok") {
-                alert("사용가능한 아이디입니다");
-            }else {
-                alert("사용중인 아이디입니다");
-            }
+                if (checkResult == "ok") {
+                    // 사용가능한 아이디
+                    idCheck.innerHTML = "멋진 아이디군요 !!";
+                    idCheck.style.color = "green";
+                } else {
+                    // 이미 사용중인 아이디
+                    idCheck.innerHTML = "사용중인 아이디입니다";
+                    idCheck.style.color = "red";
+                }
+                alert("아이디 중복체크 중입니다.....");
             },
-            error:function (){
-                alert("code error;")
+            error: function () {
+                alert("오타체크");
             }
         })
-    }
-    const pwCheck = () => {
-        const pw1 = document.getElementById("pw1").value;
-        const pw2 = document.getElementById("pw2").value;
-        if(pw1 == pw2){
-            alert("비밀번호가 일치합니다")
-        }else {
-            alert("비밀번호를 확인해주세요")
-        }
     }
 </script>
 </html>

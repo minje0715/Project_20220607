@@ -3,8 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.its.project.dto.ProductDTO" alias="product"></typeAlias>
-        <typeAlias type="com.its.project.dto.MemberDTO" alias="member"></typeAlias>
-
+        <typeAlias type="com.its.memberboard.dto.MemberDTO" alias="member"></typeAlias>
+        <typeAlias type="com.its.memberboard.dto.BoardDTO" alias="board"></typeAlias>
+        <typeAlias type="com.its.memberboard.dto.CommentDTO" alias="comment"></typeAlias>
     </typeAliases>
 </configuration>
