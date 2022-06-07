@@ -68,7 +68,9 @@ public class MemberController {
     @GetMapping ("/update")
     public String updateForm(HttpSession session, Model model) {
        Long updateId = (Long) session.getAttribute("loginId");
+        System.out.println("updateId = " + updateId);
        MemberDTO memberDTO = memberService.findById(updateId);
+        System.out.println("memberDTO = " + memberDTO);
        model.addAttribute("updateMember", memberDTO);
        return "memberPages/update";
     }
@@ -84,6 +86,11 @@ public class MemberController {
     @GetMapping ("/delete")
     public String delete(@RequestParam("id") Long mid ) {
         memberService.delete(mid);
-        return "redirect:/member/detail";
+        return "redirect:/member/logout";
+    }
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
     }
 }
