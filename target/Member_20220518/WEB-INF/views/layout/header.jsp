@@ -29,9 +29,14 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-
+                <c:choose>
+                <c:when test="${sessionScope.loginId != null}">
+                    <p>${sessionScope.loginMemberId}님 접속중♥</p>
+                </c:when>
+                </c:choose>
                 <button onclick="findByAdmin()" type="button" class="btn btn-outline-light me-2">공지사항</button>
                 <button onclick="boardList()" type="button" class="btn btn-outline-light me-2">커뮤니티</button>
+                <button onclick="itemList()" type="button" class="btn btn-outline-light me-2">거래소</button>
 
                 <c:choose>
                     <c:when test="${sessionScope.loginMemberId eq 'admin'}">
@@ -42,17 +47,17 @@
             </ul>
 
             <form action="/board/search" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <select name="searchType">
-                        <option class="form-control form-control-dark text-white bg-dark" value="boardTitle">글 제목
-                        </option>
-                        <option class="form-control form-control-dark text-white bg-dark" value="boardWriter">작성자
-                        </option>
-                    </select>
+                <select name="searchType">
+                    <option class="form-control form-control-dark text-white bg-dark" value="boardTitle">글 제목
+                    </option>
+                    <option class="form-control form-control-dark text-white bg-dark" value="boardWriter">작성자
+                    </option>
+                </select>
 
                 <input type="search" name="q" class="form-control form-control-dark text-white bg-dark"
                        placeholder="검색어입력.."
                        aria-label="Search">
-                    <input class="form-control form-control-dark text-white bg-dark " type="submit" value="검색">
+                <input class="form-control form-control-dark text-white bg-dark " type="submit" value="검색">
             </form>
 
             <div class="text-end">
@@ -95,6 +100,9 @@
     }
     const adminSave = () => {
         location.href = "/board/saveForm";
+    }
+    const itemList = () => {
+        location.href = "/item/index";
     }
 </script>
 </html>
