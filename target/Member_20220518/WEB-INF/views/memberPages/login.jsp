@@ -86,11 +86,9 @@
 <form action="/member/login" method="post">
     <div class="input-box">
         <input type="text" id="memberId" name="memberId" placeholder="아이디" required>
-        <label for="memberId">아이디</label>
     </div>
     <div class="input-box">
         <input type="password" id="memberPassword" name="memberPassword" placeholder="비밀번호" required>
-        <label for="memberPassword">비밀번호</label>
     </div>
     <button>로그인</button>
 </form>

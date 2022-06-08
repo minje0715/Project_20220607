@@ -5,8 +5,8 @@
 
 <mapper namespace="Board">
     <insert id="save" parameterType="board">
-        insert into board_table (boardTitle, boardWriter, boardContents, boardCreatedDate, boardFileName)
-values (#{boardTitle}, #{boardWriter}, #{boardContents}, now(), boardFileName)
+        insert into board_table (boardTitle, boardWriter, boardContents, boardCreatedTime)
+values (#{boardTitle}, #{boardWriter}, #{boardContents}, now())
     </insert>
 
     <select id="findById" parameterType="Long" resultType="board">

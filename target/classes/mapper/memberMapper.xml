@@ -15,19 +15,15 @@ values (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberP
         select * from member_table where memberId=#{memberId}
     </select>
     <select id="findById" parameterType="Long" resultType="member">
-        select * from member_table where id=#{id}
+        select * from member_table where mid=#{mid}
     </select>
     <update id="update" parameterType="member">
-        update member_table set memberPhone =#{memberPhone} where id=#{id}
+        update member_table set memberPhone =#{memberPhone} where mid=#{mid}
     </update>
     <select id="findAll" resultType="member">
         select * from member_table
     </select>
     <delete id="delete" parameterType="Long">
-        delete from member_table where id =#{id}
+        delete from member_table where mid =#{mid}
     </delete>
-
-<!--    <delete id="delete" parameterType="Long">-->
-<!--        delete from member_table where id=#{id}-->
-<!--    </delete>-->
 </mapper>

@@ -33,7 +33,7 @@
             <td>${board.boardWriter}</td>
             <td>${board.boardContents}</td>
             <td>${board.boardHits}</td>
-            <td>${board.boardCreatedDate}</td>
+            <td>${board.boardCreatedTime}</td>
         </tr>
     </table>
 </div>
@@ -69,7 +69,7 @@
                         <td>${comment.commentWriter}</td>
                         <td>${comment.commentContents}</td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss"
-                                            value="${board.boardCreatedDate}"></fmt:formatDate></td>
+                                            value="${board.boardCreatedTime}"></fmt:formatDate></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -114,7 +114,7 @@
                         output += "<td>" + result[i].cid + "</td>";
                         output += "<td>" + result[i].commentWriter + "</td>";
                         output += "<td>" + result[i].commentContents + "</td>";
-                        output += "<td>" + moment(result[i].commentCreatedDate).format("YYYY-MM-DD HH:mm:ss") + "</td>";
+                        output += "<td>" + moment(result[i].commentCreatedTime).format("YYYY-MM-DD HH:mm:ss") + "</td>";
                         output += "</tr>"
                     }
                     output += "</table>";

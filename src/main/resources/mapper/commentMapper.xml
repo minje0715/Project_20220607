@@ -5,7 +5,7 @@
 
 <mapper namespace="Comment">
 <insert id="save" parameterType="comment">
-    insert into comment_table (commentWriter, commentContents, commentCreatedDate, bid)
+    insert into comment_table (commentWriter, commentContents, commentCreatedTime, bid)
 value (#{commentWriter}, #{commentContents}, now(), #{bid})
 </insert>
     <select id="findAll" parameterType="Long" resultType="comment">

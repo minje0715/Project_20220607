@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Title</title>
-<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+    <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 </head>
 <body>
 <div class="container">
@@ -25,6 +25,7 @@
             <th>작성시간</th>
         </tr>
         <c:forEach items="${boardList}" var="board">
+            <c:if test="${board.boardWriter eq 'admin'}">
             <tr>
                 <td>${board.bid}</td>
                 <td> <a href="/board/detail?page=${page}&id=${board.bid}">${board.boardTitle}</a></td>
@@ -33,30 +34,30 @@
                 <td>${board.boardHits}</td>
                 <td>${board.boardCreatedTime}</td>
             </tr>
+            </c:if>
         </c:forEach>
     </table>
-    <button onclick="save1()" type="button" class="btn btn-primary">글작성</button>
 </div>
 <div class="container">
     <ul class="pagination justify-content-center">
         <c:choose>
-<%--            현재 페이지가 1페이지면 이전 글자만 보여줌--%>
+            <%--            현재 페이지가 1페이지면 이전 글자만 보여줌--%>
             <c:when test="${paging.page<=1}">
                 <li class="page-item disabled">
                     <a class="page-link">[이전]</a>
                 </li>
             </c:when>
-<%--         1페이지가 아닌 경우에는 [이전]을 클릭하면 현재 페이지보다 1 작은 페이지 요청--%>
+            <%--         1페이지가 아닌 경우에는 [이전]을 클릭하면 현재 페이지보다 1 작은 페이지 요청--%>
             <c:otherwise>
                 <li class="page-item">
                     <a class="page-link" href="/board/list?page${paging.page-1}">[이전]</a>
                 </li>
             </c:otherwise>
         </c:choose>
-<%--        for(int i=startPage; i<=endPage; i++--%>
+        <%--        for(int i=startPage; i<=endPage; i++--%>
         <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="i" step="1">
             <c:choose>
-<%--                요청한 페이지에 있는 경우 현재 페이지 번호는 텍스트만 보이게--%>
+                <%--                요청한 페이지에 있는 경우 현재 페이지 번호는 텍스트만 보이게--%>
                 <c:when test="${i eq paging.page}">
                     <li class="page-item active">
                         <a class="page-link">${i}</a>
@@ -85,18 +86,4 @@
     </ul>
 </div>
 </body>
-<script>
-
-    const save1 = () => {
-        <c:choose>
-        <c:when test="${sessionScope.loginId == null}">
-        alert("로그인이 필요합니다")
-        location.href = "/member/login";
-        </c:when>
-        <c:otherwise>
-        location.href = "/board/saveForm";
-        </c:otherwise>
-        </c:choose>
-    }
-</script>
 </html>

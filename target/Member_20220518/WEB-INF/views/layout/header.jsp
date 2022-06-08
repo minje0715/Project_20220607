@@ -30,13 +30,13 @@
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-                <button onclick="boardList()" type="button" class="btn btn-outline-light me-2">메인화면</button>
-                <button onclick="boardList()" type="button" class="btn btn-outline-light me-2">글목록</button>
-                <button onclick="save1(${sessionScope.loginId})" type="button" class="btn btn-outline-light me-2">글작성
-                </button>
+                <button onclick="findByAdmin()" type="button" class="btn btn-outline-light me-2">공지사항</button>
+                <button onclick="boardList()" type="button" class="btn btn-outline-light me-2">커뮤니티</button>
+
                 <c:choose>
                     <c:when test="${sessionScope.loginMemberId eq 'admin'}">
                         <button onclick="findId()" type="button" class="btn btn-outline-light me-2">회원목록</button>
+                        <button onclick="adminSave()" type="button" class="btn btn-outline-light me-2">공지사항작성</button>
                     </c:when>
                 </c:choose>
             </ul>
@@ -72,6 +72,9 @@
 </header>
 </body>
 <script>
+    const findByAdmin = () => {
+        location.href = "/board/findByAdmin";
+    }
     const save = () => {
         location.href = "/member/save";
     }
@@ -87,19 +90,11 @@
     const logout = () => {
         location.href = "/member/logout";
     }
-    const save1 = () => {
-        <c:choose>
-        <c:when test="${sessionScope.loginId == null}">
-        alert("로그인이 필요합니다")
-        location.href = "/member/login";
-        </c:when>
-        <c:otherwise>
-        location.href = "/board/saveForm";
-        </c:otherwise>
-        </c:choose>
-    }
     const boardList = () => {
         location.href = "/board/list";
+    }
+    const adminSave = () => {
+        location.href = "/board/saveForm";
     }
 </script>
 </html>

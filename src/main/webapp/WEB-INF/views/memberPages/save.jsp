@@ -38,6 +38,7 @@
         <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호" required>
         <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호확인" required>
         <input class="form-control mb-2" type="text" name="memberName" placeholder="이름" required>
+        <input class="form-control mb-2" type="text" name="memberBirth" placeholder="생년월일" required>
         <input class="form-control mb-2" type="text" name="memberEmail" placeholder="이메일" required>
         <input class="form-control mb-2" type="tel" name="memberPhone"
                required pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" title="###-####-####" placeholder="전화번호">

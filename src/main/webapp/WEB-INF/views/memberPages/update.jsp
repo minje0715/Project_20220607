@@ -75,7 +75,7 @@
 <form action="/member/update" method="post" name="update">
 
     <div class="input-box">
-        <input type="text"  name="id" value="${updateMember.id}" readonly>
+        <input type="text"  name="id" value="${updateMember.mid}" readonly>
         <label>회원번호</label>
     </div>
 
