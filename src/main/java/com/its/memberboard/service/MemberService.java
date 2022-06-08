@@ -40,6 +40,7 @@ public class MemberService {
     }
 
     public boolean update(MemberDTO memberDTO) {
+        System.out.println("SmemberDTO = " + memberDTO);
        int updateResult = memberRepository.update(memberDTO);
        if(updateResult > 0) {
            return true;

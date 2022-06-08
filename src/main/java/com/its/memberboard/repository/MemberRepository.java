@@ -30,6 +30,7 @@ public class MemberRepository {
     }
 
     public int update(MemberDTO memberDTO) {
+        System.out.println("RmemberDTO = " + memberDTO);
         return sql.update("Member.update", memberDTO);
     }
 

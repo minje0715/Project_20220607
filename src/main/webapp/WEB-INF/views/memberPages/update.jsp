@@ -75,7 +75,7 @@
 <form action="/member/update" method="post" name="update">
 
     <div class="input-box">
-        <input type="text"  name="id" value="${updateMember.mid}" readonly>
+        <input type="text"  name="mid" value="${updateMember.mid}" readonly>
         <label>회원번호</label>
     </div>
 
@@ -116,6 +116,7 @@
          const pwDB = '${updateMember.memberPassword}';
 
          if(pwConfirm == pwDB) {
+             console.log("ok")
              update.submit();
          }else {
              alert("비밀번호가 틀립니다")

@@ -12,4 +12,8 @@ public class ItemController {
         return "itemPages/index";
     }
 
+    @GetMapping("/itemSave") //판매창으로 이동
+    public String saveForm() {
+        return "itemPages/save";
+    }
 }

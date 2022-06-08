@@ -12,7 +12,7 @@ values (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberP
         select memberId from member_table where memberId=#{memberId}
     </select>
     <select id="login" parameterType="member" resultType="member">
-        select * from member_table where memberId=#{memberId}
+        select * from member_table where memberId=#{memberId} and memberPassword =#{memberPassword}
     </select>
     <select id="findById" parameterType="Long" resultType="member">
         select * from member_table where mid=#{mid}

@@ -71,7 +71,7 @@
 <header>
     <div id="page-wrapper">
         <!-- 사이드바 -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" style="margin-top: 130px">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">menu</a>
@@ -80,14 +80,14 @@
                     <li><a href="#"><i style="color: white" class="bi bi-coin"></i> &nbsp; &nbsp; 구매</a></li>
                 </div>
                 <div>
-                    <li><a href="#"><i style="color: white" class="bi bi-cart-dash-fill"></i> &nbsp; &nbsp; 판매</a></li>
+                    <li><a href="/item/itemSave"><i style="color: white" class="bi bi-cart-dash-fill"></i> &nbsp; &nbsp; 판매</a></li>
                 </div>
                 <div>
                     <li><a href="#"><i style="color: white" class="bi bi-chat-left-text"></i> &nbsp; &nbsp; 거래내역</a>
                     </li>
                 </div>
                 <div>
-                    <li><a href="#"><i style="color: white" class="bi bi-house-heart"></i> &nbsp; &nbsp; 홈으로</a></li>
+                    <li><a href="/board/findByAdmin"><i style="color: white" class="bi bi-house-heart"></i> &nbsp; &nbsp; 홈으로</a></li>
                 </div>
             </ul>
         </div>

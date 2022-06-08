@@ -11,87 +11,107 @@
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <script src="/resources/js/jquery.js"></script>
-    <style>
-        header {
-            display: flex;
-            justify-content: center;
-        }
+    <style>@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
 
-        form {
-            padding: 10px;
-        }
+    .login-card {
+        padding: 40px;
+        width: 274px;
+        background-color: #F7F7F7;
+        margin: 200px auto;
+        border-radius: 2px;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
 
-        .input-box {
-            position: relative;
-            margin: 10px 0;
-        }
+    }
 
-        .input-box > input {
-            background: transparent;
-            border: none;
-            border-bottom: solid 1px #ccc;
-            padding: 20px 0px 5px 0px;
-            font-size: 14pt;
-            width: 100%;
-        }
+    .login-card h1 {
+        font-weight: 100;
+        text-align: center;
+        font-size: 2.3em;
+    }
 
-        input::placeholder {
-            color: transparent;
-        }
+    .login-card input[type=submit] {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+        position: relative;
+    }
 
-        input:placeholder-shown + label {
-            color: #aaa;
-            font-size: 14pt;
-            top: 15px;
+    .login-card input[type=text], input[type=password] {
+        height: 44px;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 10px;
+        -webkit-appearance: none;
+        background: #fff;
+        border: 1px solid #d9d9d9;
+        border-top: 1px solid #c0c0c0;
+        /* border-radius: 2px; */
+        padding: 0 8px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
 
-        }
+    .login-card input[type=text]:hover, input[type=password]:hover {
+        border: 1px solid #b9b9b9;
+        border-top: 1px solid #a0a0a0;
+        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
 
-        input:focus + label, label {
-            color: #8aa1a1;
-            font-size: 10pt;
-            pointer-events: none;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            transition: all 0.2s ease;
-            -webkit-transition: all 0.2s ease;
-            -moz-transition: all 0.2s ease;
-            -o-transition: all 0.2s ease;
-        }
+    .login {
+        text-align: center;
+        font-size: 14px;
+        font-family: 'Arial', sans-serif;
+        font-weight: 700;
+        height: 36px;
+        padding: 0 8px;
+        /* border-radius: 3px; */
+        /* -webkit-user-select: none;
+          user-select: none; */
+    }
 
-        input:focus, input:not(:placeholder-shown) {
-            border-bottom: solid 1px #8aa1a1;
-            outline: none;
-        }
+    .login-submit {
+        border: 0px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+        background-color: #4d90fe;
+    }
 
-        button {
-            background-color: #8aa1a1;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            width: 100%;
-            height: 35px;
-            font-size: 14pt;
-            margin-top: 100px;
-        }
+    .login-submit:hover {
+        /* border: 1px solid #2f5bb7; */
+        border: 0px;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+        background-color: #357ae8;
+        /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+    }
 
-        .width{
-            max-width: 700px;
-        }
+    .login-card a {
+        text-decoration: none;
+        color: #666;
+        font-weight: 400;
+        text-align: center;
+        display: inline-block;
+        opacity: 0.6;
+        transition: opacity ease 0.5s;
+    }
 
+    .login-card a:hover {
+        opacity: 1;
+    }
     </style>
 </head>
 <body>
-<div class="width container mt-5">
-<form action="/member/login" method="post">
-    <div class="input-box">
+<div class="login-card"><h1>로그인</h1><br>
+    <form action="/member/login" method="post">
         <input type="text" id="memberId" name="memberId" placeholder="아이디" required>
-    </div>
-    <div class="input-box">
         <input type="password" id="memberPassword" name="memberPassword" placeholder="비밀번호" required>
-    </div>
-    <button>로그인</button>
-</form>
+        <button class="login-submit btn btn-lg d-grid mx-auto">로그인</button>
+    </form>
 </div>
 </body>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 </html>

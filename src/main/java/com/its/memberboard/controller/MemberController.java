@@ -45,9 +45,7 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
         MemberDTO loginMember = memberService.login(memberDTO);
-        System.out.println("loginMember = " + loginMember);
         if (loginMember != null) {
-            System.out.println("loginMember = " + loginMember);
             model.addAttribute("loginMember", loginMember);
             session.setAttribute("loginId", loginMember.getMid());
             session.setAttribute("loginMemberId", loginMember.getMemberId());
@@ -83,6 +81,7 @@ public class MemberController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute MemberDTO memberDTO) {
+        System.out.println("controller memberDTO = " + memberDTO);
         boolean updateResult = memberService.update(memberDTO);
         if (updateResult) {
             return "redirect:/member/myPage";

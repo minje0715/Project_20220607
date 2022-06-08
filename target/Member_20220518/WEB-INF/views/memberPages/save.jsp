@@ -36,7 +36,7 @@
                onblur="duplicateCheck()" required>
         <span id="id-check-result"></span>
         <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호" required>
-        <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호확인" required>
+        <input class="form-control mb-2" type="text"  placeholder="비밀번호확인" required>
         <input class="form-control mb-2" type="text" name="memberName" placeholder="이름" required>
         <input class="form-control mb-2" type="text" name="memberBirth" placeholder="생년월일" required>
         <input class="form-control mb-2" type="text" name="memberEmail" placeholder="이메일" required>
