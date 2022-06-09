@@ -90,7 +90,7 @@
                 <input type="search" name="q" class="form-control form-control-dark text-white bg-dark"
                        placeholder="검색어입력.."
                        aria-label="Search">
-                <input class="form-control form-control-dark text-white bg-dark " type="submit" value="★★★">
+                <input class="form-control form-control-dark text-white bg-dark " type="submit" value="Search?">
             </form>
                 </li>
 

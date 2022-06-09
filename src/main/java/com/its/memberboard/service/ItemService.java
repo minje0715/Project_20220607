@@ -37,7 +37,7 @@ public class ItemService {
 
     private static final int PAGE_LIMIT = 9;
     // 한 페이지에 보여줄 글 갯수
-    private static final int BLOCK_LIMIT = 3;
+    private static final int BLOCK_LIMIT = 5;
 
     /**
      * 요청한 페이지에 해당하는 글 목록을 DB에서 가져오는 역할
