@@ -29,13 +29,24 @@
 </head>
 <body>
 <div class="width container mt-5">
-<form action="/item/save" method="post" enctype="multipart/form-data">
+<form action="/item/save" method="post" enctype="multipart/form-data" name="item2">
 <input class="form-control mb-2" type="text" name="memberId" value="${sessionScope.loginMemberId}" readonly>
-<input class="form-control mb-2" type="text" name="itemName" placeholder="아이템이름">
-<input class="form-control mb-2" type="text" name="itemPrice" placeholder="아이템가격">
-<input type="file" name="itemFile">
-    <button type="submit">판매등록</button>
+<input class="form-control mb-2" type="text" name="itemName" placeholder="아이템이름" required>
+<input class="form-control mb-2" type="text" name="itemPrice" placeholder="아이템가격" required>
+<input type="file" name="itemFile" required>
+    <button onclick="item()">판매등록</button>
 </form>
 </div>
 </body>
+<script>
+    const item = () => {
+        document.item2.action = "/item/save";
+        document.item2.submit();
+
+        setTimeout(function(){
+window.close()
+          // window.open('about:link','_self').close();
+        },200);
+    }
+</script>
 </html>

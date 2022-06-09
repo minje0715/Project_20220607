@@ -1,14 +1,13 @@
 package com.its.memberboard.controller;
 
+import com.its.memberboard.dto.BoardDTO;
 import com.its.memberboard.dto.ItemDTO;
+import com.its.memberboard.dto.PageDTO;
 import com.its.memberboard.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,10 +39,20 @@ public class ItemController {
     return "redirect:/item/findAll";
     }
 
-    @GetMapping ("/findAll")
-    public String findAll(Model model) {
-        List<ItemDTO> itemDTOList = itemService.findAll();
+//    @GetMapping ("/findAll")
+//    public String findAll(Model model) {
+//        List<ItemDTO> itemDTOList = itemService.findAll();
+//        model.addAttribute("itemList", itemDTOList);
+//        return "itemPages/findAll";
+//    }
+
+    @GetMapping("/findAll") // 헤더 -> 글목록
+    public String findAll(Model model,@RequestParam(value="page", required = false,
+            defaultValue = "1") int page) {
+        List<ItemDTO> itemDTOList = itemService.pagingList(page);
+        PageDTO paging = itemService.paging(page);
         model.addAttribute("itemList", itemDTOList);
+        model.addAttribute("paging", paging);
         return "itemPages/findAll";
     }
 }

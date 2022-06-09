@@ -9,7 +9,12 @@
 values (#{memberId}, #{itemName}, #{itemPrice}, now(), #{itemFileName})
     </insert>
     <select id="findAll" resultType="item">
-        select * from item_table;
+        select * from item_table order by itemCreatedTime desc;
     </select>
-
+    <select id="count" resultType="int">
+        select count(pid) from item_table
+    </select>
+    <select id="pagingList" parameterType="java.util.HashMap" resultType="item">
+    select * from item_table order by pid desc limit #{start}, #{limit}
+    </select>
 </mapper>
