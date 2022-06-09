@@ -50,7 +50,7 @@ public class MemberController {
             session.setAttribute("loginId", loginMember.getMid());
             session.setAttribute("loginMemberId", loginMember.getMemberId());
             session.setAttribute("loginMemberPassword", loginMember.getMemberPassword());
-            return "redirect:/board/list";
+            return "redirect:/board/findByAdmin";
         } else {
             return "login-fail";
         }
@@ -60,7 +60,7 @@ public class MemberController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/board/list";
+        return "redirect:/board/findByAdmin";
     }
 
     @GetMapping("/myPage")
@@ -98,7 +98,7 @@ public class MemberController {
     @GetMapping("/delete")
     public String delete(@RequestParam("id") Long mid){
         memberService.delete(mid);
-        return "redirect:/member/memberList";
+        return "redirect:/member/logout";
     }
 
 }

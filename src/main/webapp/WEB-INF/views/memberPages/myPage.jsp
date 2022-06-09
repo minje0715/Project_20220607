@@ -25,6 +25,7 @@
             <th>이메일</th>
             <th>핸드폰</th>
             <th>회원정보수정</th>
+            <th>회원탈퇴</th>
         </tr>
             <tr>
                 <td>${member.mid}</td>
@@ -34,6 +35,7 @@
                 <td>${member.memberEmail}</td>
                 <td>${member.memberPhone}</td>
                 <td><button class="btn btn-outline-warning"><a href="/member/updateForm">수정</a></button></td>
+                <td><button class="btn btn-outline-danger"><a href="/member/delete?id=${member.mid}">회원탈퇴</a></button></td>
             </tr>
     </table>
 </div>

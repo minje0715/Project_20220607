@@ -78,20 +78,20 @@
                     <a href="#">menu</a>
                 </li>
                 <div>
-                    <li><a onclick="a()" href="#"><i style="color: white" class="bi bi-coin"></i> &nbsp; &nbsp; 구매</a>
+                    <li style="color: white"><a onclick="a()"><i style="color: white" class="bi bi-coin"></i> &nbsp; &nbsp; 구매</a>
                     </li>
                 </div>
                 <div>
-                    <li><a onclick="b()" href="/item/itemSave"><i style="color: white" class="bi bi-cart-dash-fill"></i>
-                        &nbsp; &nbsp; 판매</a></li>
-                </div>
-                <div>
-                    <li><a onclick="c()" href="#"><i style="color: white" class="bi bi-chat-left-text"></i> &nbsp;
-                        &nbsp; 거래내역</a>
+                    <li style="color: white"><a onclick="b()"><i style="color: white" class="bi bi-cart-dash-fill"></i> &nbsp; &nbsp; 판매</a>
                     </li>
                 </div>
                 <div>
-                    <li><a href="/board/findByAdmin"><i style="color: white" class="bi bi-house-heart"></i> &nbsp;
+                    <li style="color: white"><a onclick="c()"><i style="color: white" class="bi bi-chat-left-text"></i> &nbsp; &nbsp;
+                        거래내역</a>
+                    </li>
+                </div>
+                <div>
+                    <li style="color: white"><a href="/board/findByAdmin"><i style="color: white" class="bi bi-house-heart"></i> &nbsp;
                         &nbsp; 홈으로</a></li>
                 </div>
             </ul>
@@ -103,16 +103,23 @@
     const a = () => {
         if (${sessionScope.loginId eq null}) {
             alert("로그인이 필요합니다")
+            location.href = "/member/login";
+        }else {
+            location.href = "/item/findAll";
         }
     }
     const b = () => {
         if (${sessionScope.loginId eq null}) {
             alert("로그인이 필요합니다")
+            location.href = "/member/login";
+        } else {
+            location.href = "/item/itemSave";
         }
     }
     const c = () => {
         if (${sessionScope.loginId eq null}) {
             alert("로그인이 필요합니다")
+            location.href = "/member/login";
         }
     }
 </script>
