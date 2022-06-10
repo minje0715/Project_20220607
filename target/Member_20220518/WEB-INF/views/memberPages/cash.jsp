@@ -49,7 +49,7 @@
 </head>
 <body>
 <div class="text-center">
-    <form name="cashForm" method="post" action="/member/cash">
+    <form name="viewForm3" method="post" action="/member/cash">
         <div class="s_stit pt_20">요금제 선택 <span class="txt_p11 right">(VAT포함)</span></div>
         <table class="tbTypeB pb_40" style="">
             <tbody>
@@ -73,8 +73,8 @@
             </tr>
             </tbody>
         </table>
-        <div class="center pb_50">
         <input type="text" class="text" hidden="hidden" name="mid" value="${sessionScope.loginId}">
+        <div class="center pb_50">
             <input type="submit" class="btn btn-outline-danger mt-3"  style="width: 120px; height: 50px;" value="충전하기">
         </div>
     </form>

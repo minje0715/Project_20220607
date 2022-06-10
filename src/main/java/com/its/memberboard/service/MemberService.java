@@ -57,4 +57,8 @@ public class MemberService {
         memberRepository.delete(mid);
     }
 
+    public void cash(MemberDTO memberDTO) {
+        System.out.println("memberDTO = " + memberDTO);
+        memberRepository.cash(memberDTO);
+    }
 }

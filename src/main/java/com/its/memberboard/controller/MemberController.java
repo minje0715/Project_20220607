@@ -1,5 +1,6 @@
 package com.its.memberboard.controller;
 
+import com.its.memberboard.dto.ItemDTO;
 import com.its.memberboard.dto.MemberDTO;
 import com.its.memberboard.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 import java.util.List;
 
 @Controller
@@ -101,9 +103,15 @@ public class MemberController {
         memberService.delete(mid);
         return "redirect:/member/logout";
     }
-    @GetMapping(/"cashForm")
+    @GetMapping("/cashForm")
     public String cashForm() {
         return "memberPages/cash";
+    }
+    @PostMapping ("/cash")
+    public String cash(@ModelAttribute MemberDTO memberDTO) {
+        System.out.println("memberDTO = " + memberDTO);
+    memberService.cash(memberDTO);
+    return "redirect:/member/myPage";
     }
 }
 
