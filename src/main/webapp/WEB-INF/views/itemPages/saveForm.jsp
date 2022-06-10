@@ -33,7 +33,7 @@
 
         const url = "/item/save";
 
-        window.open(url, "hello popup", windowStatus);
+        window.open(url, "Save", windowStatus);
 
     }
 </script>

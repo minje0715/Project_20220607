@@ -12,7 +12,11 @@
 <head>
     <title>Title</title>
 
-
+    <style>
+        .card-center{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
@@ -30,11 +34,11 @@
                             <h5 class="card-title">${item.itemName}</h5>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">판매자 [${item.memberId}]</li>
-                                <li class="list-group-item">이름 [${item.itemName}]</li>
-                                <li class="list-group-item">가격 [${item.itemPrice}sp]</li>
+                                <li class="list-group-item">이름   [${item.itemName}]</li>
+                                <li class="list-group-item">가격   [${item.itemPrice}sp]</li>
                                 <li class="list-group-item">[${item.itemCreatedTime}]</li>
                             </ul>
-                            <div class="card-body">
+                            <div class="card-body card-center">
                                 <button class="btn btn-outline-warning" >구매</button>
                             </div>
                         </div>

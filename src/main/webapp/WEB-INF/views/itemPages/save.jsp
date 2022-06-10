@@ -44,9 +44,9 @@
         document.item2.submit();
 
         setTimeout(function(){
-window.close()
+         window.close();
           // window.open('about:link','_self').close();
-        },200);
+        },100);
     }
 </script>
 </html>

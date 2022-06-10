@@ -12,10 +12,10 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
 </head>
 <body>
 <%--    <header>--%>
@@ -90,7 +90,7 @@
                 <input type="search" name="q" class="form-control form-control-dark text-white bg-dark"
                        placeholder="검색어입력.."
                        aria-label="Search">
-                <input class="form-control form-control-dark text-white bg-dark " type="submit" value="★★★">
+                <input class="form-control form-control-dark text-white bg-dark " type="submit" value="Search?">
             </form>
                 </li>
 
