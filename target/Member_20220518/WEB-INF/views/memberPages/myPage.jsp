@@ -14,7 +14,7 @@
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
-<h2>마이페이지</h2>
+<h2 class="text-center" style="background-color: ">마이페이지</h2>
 <div class="container">
     <table class="table">
         <tr>
@@ -38,6 +38,7 @@
                 <td><button class="btn btn-outline-danger"><a href="/member/delete?id=${member.mid}">회원탈퇴</a></button></td>
             </tr>
     </table>
+    <button class="text-center btn btn-danger"  style="width: 120px; height: 70px;">캐쉬 충전</button>
 </div>
 </body>
 </html>

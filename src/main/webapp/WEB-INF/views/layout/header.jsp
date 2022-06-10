@@ -35,7 +35,10 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <c:choose>
                     <c:when test="${sessionScope.loginId != null}">
-                        <p>${sessionScope.loginMemberId}님 접속중♥</p>
+                        <div>
+                            <div>[${sessionScope.loginMemberId}]님 접속중♥</div>
+                        <div>보유 캐쉬 ${sessionScope.loginMemberCash}sp</div>
+                        </div>
                     </c:when>
                 </c:choose>
                 <div class="dropdown">
@@ -54,18 +57,28 @@
                             <button onclick="itemList()" type="button" class="dropdown-item">■거래소</button>
                         </li>
                         <ul>
-                            <li style="color: white"><button onclick="a()" class="dropdown-item">
-                                <i style="color: white" class="bi bi-coin"></i>구매</button></li>
-
-                            <li style="color: white"><button onclick="b()" type="button" class="dropdown-item">
-                                <i style="color: white" class="bi bi-cart-dash-fill"></i>판매</button>
+                            <li style="color: white">
+                                <button onclick="a()" class="dropdown-item">
+                                    <i style="color: white" class="bi bi-coin"></i>구매
+                                </button>
                             </li>
 
-                            <li style="color: white"><button onclick="c()" type="button" class="dropdown-item">
-                                <i style="color: white" class="bi bi-chat-left-text"></i>거래내역</button></li>
+                            <li style="color: white">
+                                <button onclick="b()" type="button" class="dropdown-item">
+                                    <i style="color: white" class="bi bi-cart-dash-fill"></i>판매
+                                </button>
+                            </li>
 
-                            <li style="color: white"><button href="/board/findByAdmin" type="button" class="dropdown-item">
-                                <i style="color: white" class="bi bi-house-heart"></i>홈으로</button>
+                            <li style="color: white">
+                                <button onclick="c()" type="button" class="dropdown-item">
+                                    <i style="color: white" class="bi bi-chat-left-text"></i>거래내역
+                                </button>
+                            </li>
+
+                            <li style="color: white">
+                                <button href="/board/findByAdmin" type="button" class="dropdown-item">
+                                    <i style="color: white" class="bi bi-house-heart"></i>홈으로
+                                </button>
                             </li>
                         </ul>
                     </ul>
@@ -79,34 +92,35 @@
             </ul>
             <ul>
                 <li class="nav-item">
-            <form action="/board/search" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <select name="searchType">
-                    <option class="form-control form-control-dark text-white bg-dark" value="boardTitle">글 제목
-                    </option>
-                    <option class="form-control form-control-dark text-white bg-dark" value="boardWriter">작성자
-                    </option>
-                </select>
+                    <form action="/board/search" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+                          role="search">
+                        <select name="searchType">
+                            <option class="form-control form-control-dark text-white bg-dark" value="boardTitle">글 제목
+                            </option>
+                            <option class="form-control form-control-dark text-white bg-dark" value="boardWriter">작성자
+                            </option>
+                        </select>
 
-                <input type="search" name="q" class="form-control form-control-dark text-white bg-dark"
-                       placeholder="검색어입력.."
-                       aria-label="Search">
-                <input class="form-control form-control-dark text-white bg-dark " type="submit" value="Search?">
-            </form>
+                        <input type="search" name="q" class="form-control form-control-dark text-white bg-dark"
+                               placeholder="검색어입력.."
+                               aria-label="Search">
+                        <input class="form-control form-control-dark text-white bg-dark " type="submit" value="Search?">
+                    </form>
                 </li>
 
             </ul>
-<%--            <div class="text-end">--%>
-                <c:choose>
-                    <c:when test="${sessionScope.loginId == null}">
-                       <button onclick="login()" type="button" class="btn btn-outline-light me-2">로그인</button>
-                        <button onclick="save()" type="button" class="btn btn-warning">회원가입</button>
-                    </c:when>
-                    <c:otherwise>
-                        <button onclick="myPage()" type="button" class="btn btn-outline-light me-2">마이페이지</button>
-                        <button onclick="logout()" type="button" class="btn btn-warning">로그아웃</button>
-                    </c:otherwise>
-                </c:choose>
-<%--            </div>--%>
+            <%--            <div class="text-end">--%>
+            <c:choose>
+                <c:when test="${sessionScope.loginId == null}">
+                    <button onclick="login()" type="button" class="btn btn-outline-light me-2">로그인</button>
+                    <button onclick="save()" type="button" class="btn btn-warning">회원가입</button>
+                </c:when>
+                <c:otherwise>
+                    <button onclick="myPage()" type="button" class="btn btn-outline-light me-2">마이페이지</button>
+                    <button onclick="logout()" type="button" class="btn btn-warning">로그아웃</button>
+                </c:otherwise>
+            </c:choose>
+            <%--            </div>--%>
         </div>
     </div>
 </header>

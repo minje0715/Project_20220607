@@ -14,7 +14,7 @@
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
-<h2>마이페이지</h2>
+<h2 class="text-center" style="background-color: ">마이페이지</h2>
 <div class="container">
     <table class="table">
         <tr>
@@ -38,6 +38,12 @@
                 <td><button class="btn btn-outline-danger"><a href="/member/delete?id=${member.mid}">회원탈퇴</a></button></td>
             </tr>
     </table>
+    <button onclick="openPopup()" class="btn btn-danger"  style="width: 90px; height: 50px;">캐쉬 충전</button>
 </div>
 </body>
+<script>
+    const openPopup = () => {
+        window.open("/member/cashForm", "캐쉬충전", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+    }
+</script>
 </html>

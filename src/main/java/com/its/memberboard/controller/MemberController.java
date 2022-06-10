@@ -50,6 +50,7 @@ public class MemberController {
             session.setAttribute("loginId", loginMember.getMid());
             session.setAttribute("loginMemberId", loginMember.getMemberId());
             session.setAttribute("loginMemberPassword", loginMember.getMemberPassword());
+            session.setAttribute("loginMemberCash", loginMember.getMemberCash());
             return "redirect:/board/findByAdmin";
         } else {
             return "login-fail";
@@ -100,7 +101,10 @@ public class MemberController {
         memberService.delete(mid);
         return "redirect:/member/logout";
     }
-
+    @GetMapping(/"cashForm")
+    public String cashForm() {
+        return "memberPages/cash";
+    }
 }
 
 
