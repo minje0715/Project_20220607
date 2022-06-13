@@ -69,4 +69,12 @@ public class ItemService {
         paging.setMaxPage(maxPage);
         return paging;
     }
+
+    public ItemDTO findById(Long pid) {
+      return itemRepository.findById(pid);
+    }
+
+    public void delete(Long pid) {
+        itemRepository.delete(pid);
+    }
 }

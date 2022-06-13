@@ -1,13 +1,16 @@
 package com.its.memberboard.controller;
 
 import com.its.memberboard.dto.ItemDTO;
+import com.its.memberboard.dto.MemberDTO;
 import com.its.memberboard.dto.PageDTO;
 import com.its.memberboard.service.ItemService;
+import com.its.memberboard.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,6 +19,11 @@ import java.util.List;
 public class ItemController {
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private MemberService memberService;
+
+
+
     @GetMapping("/index")
     public String index() {
         return "itemPages/index";
@@ -48,8 +56,17 @@ public class ItemController {
         model.addAttribute("paging", paging);
         return "itemPages/findAll";
     }
-//    @GetMapping ("/buyItem")
-//    public String buyItem() {
-//
-//    }
+    @GetMapping ("/buyItem")
+    public String buyItem(@RequestParam("id") Long pid,
+                            @RequestParam("mid") Long mid) {
+        MemberDTO buyMember = memberService.findById(mid);
+            System.out.println("buyMember = " + buyMember);
+        if(buyMember.getMemberCash() > itemService.findById(pid).getItemPrice()) {
+            itemService.delete(pid);
+            memberService.cashUpdate(buyMember);
+            return "index";
+        }else {
+            return "buy-fail";
+        }
+    }
 }

@@ -75,7 +75,7 @@
                             </li>
 
                             <li style="color: white">
-                                <button href="index" type="button" class="dropdown-item">
+                                <button href="/" type="button" class="dropdown-item">
                                     <i style="color: white" class="bi bi-house-heart"></i>홈으로
                                 </button>
                             </li>
@@ -139,6 +139,8 @@
         if (${sessionScope.loginId eq null}) {
             alert("로그인이 필요합니다")
             location.href = "/member/login";
+        }else {
+            location.href = "/order/findAll";
         }
     }
     const findByAdmin = () => {

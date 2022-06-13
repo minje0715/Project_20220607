@@ -1,6 +1,5 @@
 package com.its.memberboard.repository;
 
-import com.its.memberboard.dto.BoardDTO;
 import com.its.memberboard.dto.ItemDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +28,13 @@ public class ItemRepository {
 
     public List<ItemDTO> pagingList(Map<String, Integer> pagingParam) {
         return sql.selectList("Item.pagingList", pagingParam);
+    }
+
+    public ItemDTO findById(Long pid) {
+       return sql.selectOne("Item.findById", pid);
+    }
+
+    public void delete(Long pid) {
+        sql.delete("Item.delete", pid);
     }
 }

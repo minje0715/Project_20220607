@@ -46,4 +46,8 @@ public class MemberRepository {
         System.out.println("rrmemberDTO = " + memberDTO);
        return sql.update("Member.updateCash", memberDTO);
     }
+
+    public void cashUpdate(MemberDTO buyMember) {
+        sql.update("Member.cashUpdate", buyMember);
+    }
 }

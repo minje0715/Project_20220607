@@ -13,7 +13,7 @@
     <title>Title</title>
 
     <style>
-        .card-center{
+        .card-center {
             text-align: center;
         }
     </style>
@@ -28,18 +28,23 @@
             <c:forEach items="${itemList}" var="item">
                 <div class="col">
                     <div class="card" style="width: 18rem;">
-                        <img width="300" height="150" src="${pageContext.request.contextPath}/upload/${item.itemFileName}" class="card-img-top"
+                        <img width="300" height="150"
+                             src="${pageContext.request.contextPath}/upload/${item.itemFileName}" class="card-img-top"
                              alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${item.itemName}</h5>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">판매자 [${item.memberId}]</li>
-                                <li class="list-group-item">이름   [${item.itemName}]</li>
-                                <li class="list-group-item">가격   [${item.itemPrice}sp]</li>
+                                <li class="list-group-item">이름 [${item.itemName}]</li>
+                                <li class="list-group-item">가격 [${item.itemPrice}sp]</li>
                                 <li class="list-group-item">[${item.itemCreatedTime}]</li>
                             </ul>
                             <div class="card-body card-center">
-                                <button onclick="buyItem()" class="btn btn-outline-warning" >구매</button>
+                                <c:choose>
+                                    <c:when test="${sessionScope.loginId ne item.memberId}">
+                                        <button onclick="buyItem(${item.pid})" class="btn btn-outline-warning">구매</button>
+                                    </c:when>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
@@ -98,10 +103,12 @@
 </div>
 </body>
 <script>
-    const buyItem = () => {
-        if(${sessionScope.loginId ne null}){
-        location.href = "/item/buyItem";
-        }else {
+    const buyItem = (itemPid) => {
+        const buyMember = '${sessionScope.loginId}';
+
+        if (${sessionScope.loginId ne null}) {
+            location.href = "/item/buyItem?id=" + itemPid + "&mid=" + buyMember;
+        } else {
             alert("로그인이 필요합니다");
             location.href = "/member/login";
         }

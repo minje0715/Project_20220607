@@ -13,4 +13,5 @@ public class MemberDTO {
     private String memberEmail; //이메일
     private String memberPhone; //핸드폰
     private Long memberCash; // 캐쉬
+    private Long itemPrice; // 아이템 가격
 }

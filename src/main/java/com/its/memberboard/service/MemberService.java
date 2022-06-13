@@ -66,4 +66,8 @@ public class MemberService {
            return false;
        }
     }
+
+    public void cashUpdate(MemberDTO buyMember) {
+        memberRepository.cashUpdate(buyMember);
+    }
 }

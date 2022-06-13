@@ -29,4 +29,8 @@ values (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberP
     <update id="updateCash" parameterType="member">
         update member_table set memberCash = memberCash+#{memberCash} where mid=#{mid}
     </update>
+    <update id="cashUpdate" parameterType="member">
+        update member_table set memberCash = memberCash-#{itemPrice} where mid=#{mid}
+    </update>
+
 </mapper>

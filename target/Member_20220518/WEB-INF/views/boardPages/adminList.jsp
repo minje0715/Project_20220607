@@ -15,6 +15,7 @@
 
 </head>
 <body>
+<h2 class="text-center">공지사항</h2>
 <div class="container">
     <table class="table">
         <tr>

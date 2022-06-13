@@ -17,4 +17,10 @@ values (#{memberId}, #{itemName}, #{itemPrice}, now(), #{itemFileName})
     <select id="pagingList" parameterType="java.util.HashMap" resultType="item">
     select * from item_table order by pid desc limit #{start}, #{limit}
     </select>
+    <select id="findById" parameterType="Long" resultType="item">
+        select * from item_table where pid=#{pid}
+    </select>
+    <delete id="delete" parameterType="Long">
+        delete from item_table where pid =#{pid}
+    </delete>
 </mapper>
