@@ -75,7 +75,7 @@
                             </li>
 
                             <li style="color: white">
-                                <button href="/board/findByAdmin" type="button" class="dropdown-item">
+                                <button href="index" type="button" class="dropdown-item">
                                     <i style="color: white" class="bi bi-house-heart"></i>홈으로
                                 </button>
                             </li>

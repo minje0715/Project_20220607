@@ -48,8 +48,8 @@ public class ItemController {
         model.addAttribute("paging", paging);
         return "itemPages/findAll";
     }
-    @GetMapping ("/buyItem")
-    public String buyItem() {
-
-    }
+//    @GetMapping ("/buyItem")
+//    public String buyItem() {
+//
+//    }
 }
