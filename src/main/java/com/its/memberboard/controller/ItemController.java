@@ -61,10 +61,13 @@ public class ItemController {
                             @RequestParam("mid") Long mid) {
         MemberDTO buyMember = memberService.findById(mid);
             System.out.println("buyMember = " + buyMember);
+        Long itemResult = itemService.findById(pid).getItemPrice();
         if(buyMember.getMemberCash() > itemService.findById(pid).getItemPrice()) {
             itemService.delete(pid);
+            buyMember.setItemPrice(itemResult);
             memberService.cashUpdate(buyMember);
-            return "index";
+
+            return "redirect:/item/findAll";
         }else {
             return "buy-fail";
         }
