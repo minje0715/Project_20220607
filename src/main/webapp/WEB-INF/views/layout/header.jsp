@@ -37,7 +37,6 @@
                     <c:when test="${sessionScope.loginId != null}">
                         <div>
                             <div>[${sessionScope.loginMemberId}]님 접속중♥</div>
-                        <div>보유 캐쉬 ${sessionScope.loginMemberCash}sp</div>
                         </div>
                     </c:when>
                 </c:choose>
@@ -45,7 +44,7 @@
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         메뉴
-                    </button>
+                    </button> &nbsp;
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                         <li>
                             <button onclick="findByAdmin()" type="button" class="dropdown-item">■공지사항</button>
@@ -107,7 +106,6 @@
                         <input class="form-control form-control-dark text-white bg-dark " type="submit" value="Search?">
                     </form>
                 </li>
-
             </ul>
             <%--            <div class="text-end">--%>
             <c:choose>
@@ -127,12 +125,7 @@
 </body>
 <script>
     const a = () => {
-        if (${sessionScope.loginId eq null}) {
-            alert("로그인이 필요합니다")
-            location.href = "/member/login";
-        } else {
             location.href = "/item/findAll";
-        }
     }
     const b = () => {
         if (${sessionScope.loginId eq null}) {

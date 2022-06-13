@@ -14,7 +14,7 @@
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
-<h2 class="text-center" style="background-color: ">마이페이지</h2>
+<h2 class="text-center" style="background-color: #8aa1a1 ">마이페이지</h2>
 <div class="container">
     <table class="table">
         <tr>
@@ -22,8 +22,10 @@
             <th>아이디</th>
             <th>비밀번호</th>
             <th>이름</th>
+            <th>생년월일</th>
             <th>이메일</th>
             <th>핸드폰</th>
+            <th>보유캐쉬</th>
             <th>회원정보수정</th>
             <th>회원탈퇴</th>
         </tr>
@@ -32,8 +34,10 @@
                 <td>${member.memberId}</td>
                 <td>${member.memberPassword}</td>
                 <td>${member.memberName}</td>
+                <td>${member.memberBirth}</td>
                 <td>${member.memberEmail}</td>
                 <td>${member.memberPhone}</td>
+                <td>${member.memberCash}</td>
                 <td><button class="btn btn-outline-warning"><a href="/member/updateForm">수정</a></button></td>
                 <td><button class="btn btn-outline-danger"><a href="/member/delete?id=${member.mid}">회원탈퇴</a></button></td>
             </tr>

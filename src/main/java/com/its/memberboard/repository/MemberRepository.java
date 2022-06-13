@@ -42,8 +42,8 @@ public class MemberRepository {
         sql.delete("Member.delete", mid);
     }
 
-    public void cash(MemberDTO memberDTO) {
-        System.out.println("memberDTO = " + memberDTO);
-        sql.update("Member.cash", memberDTO);
+    public int updateCash(MemberDTO memberDTO) {
+        System.out.println("rrmemberDTO = " + memberDTO);
+       return sql.update("Member.updateCash", memberDTO);
     }
 }

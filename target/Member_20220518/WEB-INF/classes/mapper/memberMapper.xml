@@ -26,7 +26,7 @@ values (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberP
     <delete id="delete" parameterType="Long">
         delete from member_table where mid =#{mid}
     </delete>
-    <update id="cash" parameterType="member">
-        update member_table set memberCash = memberCash+${memberCash} where mid=#{mid}
+    <update id="updateCash" parameterType="member">
+        update member_table set memberCash = memberCash+#{memberCash} where mid=#{mid}
     </update>
 </mapper>

@@ -14,6 +14,7 @@
     <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 </head>
 <body>
+<h2 class="text-center" style="background-color: #8aa1a1 ">게시글</h2>
 <div class="container">
     <table class="table">
         <tr>

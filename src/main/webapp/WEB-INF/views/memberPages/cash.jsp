@@ -49,7 +49,7 @@
 </head>
 <body>
 <div class="text-center">
-    <form name="cashForm" method="post" action="/member/cash">
+    <form name="cash" method="post" action="/member/cash" name="cashvv">
         <div class="s_stit pt_20">요금제 선택 <span class="txt_p11 right">(VAT포함)</span></div>
         <table class="tbTypeB pb_40" style="">
             <tbody>
@@ -67,17 +67,28 @@
             </tr>
             <tr>
                 <th>금액</th>
-                <td><input type="radio" name="memberCash" id="radio1" value="30,000" checked> 30,000원</td>
-                <td><input type="radio" name="memberCash" id="radio2" value="50,000"> 50,000원</td>
-                <td><input type="radio" name="memberCash" id="radio3" value="100,000"> 100,000원</td>
+                <td><input type="radio" name="memberCash" id="radio1" value="30000" checked> 30,000원</td>
+                <td><input type="radio" name="memberCash" id="radio2" value="52500"> 50,000원</td>
+                <td><input type="radio" name="memberCash" id="radio3" value="108000"> 100,000원</td>
             </tr>
             </tbody>
         </table>
         <div class="center pb_50">
-        <input type="text" class="text" hidden="hidden" name="mid" value="${sessionScope.loginId}">
-            <input type="submit" class="btn btn-outline-danger mt-3"  style="width: 120px; height: 50px;" value="충전하기">
+            <input type="text" hidden="hidden" name="mid" value="${sessionScope.loginId}">
+            <input type="submit" onclick="cashrr()" class="btn btn-outline-danger mt-3"  style="width: 120px; height: 50px;" value="충전하기">
         </div>
     </form>
 </div>
 </body>
+<script>
+    const cashrr = () => {
+        document.cashvv.action = "/member/cash";
+        document.cashvv.submit();
+
+        setTimeout(function(){
+            window.close();
+            // window.open('about:link','_self').close();
+        },100);
+    }
+</script>
 </html>

@@ -1,6 +1,5 @@
 package com.its.memberboard.controller;
 
-import com.its.memberboard.dto.BoardDTO;
 import com.its.memberboard.dto.ItemDTO;
 import com.its.memberboard.dto.PageDTO;
 import com.its.memberboard.service.ItemService;
@@ -32,21 +31,15 @@ public class ItemController {
         return "itemPages/save";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/save") // 아이템 등록
     public String saveFile(@ModelAttribute ItemDTO itemDTO) throws IOException {
         System.out.println("ccitemDTO = " + itemDTO);
     itemService.saveFile(itemDTO);
     return "redirect:/item/findAll";
     }
 
-//    @GetMapping ("/findAll")
-//    public String findAll(Model model) {
-//        List<ItemDTO> itemDTOList = itemService.findAll();
-//        model.addAttribute("itemList", itemDTOList);
-//        return "itemPages/findAll";
-//    }
 
-    @GetMapping("/findAll") // 헤더 -> 글목록
+    @GetMapping("/findAll") // 판매등록 아이템 전체목록
     public String findAll(Model model,@RequestParam(value="page", required = false,
             defaultValue = "1") int page) {
         List<ItemDTO> itemDTOList = itemService.pagingList(page);
@@ -54,5 +47,9 @@ public class ItemController {
         model.addAttribute("itemList", itemDTOList);
         model.addAttribute("paging", paging);
         return "itemPages/findAll";
+    }
+    @GetMapping ("/buyItem")
+    public String buyItem() {
+
     }
 }

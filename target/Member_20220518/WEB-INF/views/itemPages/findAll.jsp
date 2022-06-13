@@ -39,7 +39,7 @@
                                 <li class="list-group-item">[${item.itemCreatedTime}]</li>
                             </ul>
                             <div class="card-body card-center">
-                                <button class="btn btn-outline-warning" >구매</button>
+                                <button onclick="buyItem()" class="btn btn-outline-warning" >구매</button>
                             </div>
                         </div>
                     </div>
@@ -97,4 +97,14 @@
     </ul>
 </div>
 </body>
+<script>
+    const buyItem = () => {
+        if(${sessionScope.loginId ne null}){
+        location.href = "/item/buyItem";
+        }else {
+            alert("로그인이 필요합니다");
+            location.href = "/member/login";
+        }
+    }
+</script>
 </html>

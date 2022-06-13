@@ -52,8 +52,7 @@ public class MemberController {
             session.setAttribute("loginId", loginMember.getMid());
             session.setAttribute("loginMemberId", loginMember.getMemberId());
             session.setAttribute("loginMemberPassword", loginMember.getMemberPassword());
-            session.setAttribute("loginMemberCash", loginMember.getMemberCash());
-            return "redirect:/board/findByAdmin";
+            return "index";
         } else {
             return "login-fail";
         }
@@ -92,26 +91,34 @@ public class MemberController {
             return "update-fail";
         }
     }
-    @GetMapping ("/memberList")
+
+    @GetMapping("/memberList")
     public String findAll(Model model) {
         List<MemberDTO> memberDTOList = memberService.findAll();
         model.addAttribute("memberList", memberDTOList);
         return "memberPages/findAll";
     }
+
     @GetMapping("/delete")
-    public String delete(@RequestParam("id") Long mid){
+    public String delete(@RequestParam("id") Long mid) {
         memberService.delete(mid);
         return "redirect:/member/logout";
     }
+
     @GetMapping("/cashForm")
     public String cashForm() {
         return "memberPages/cash";
     }
-    @PostMapping ("/cash")
+
+        @PostMapping ("/cash")
     public String cash(@ModelAttribute MemberDTO memberDTO) {
         System.out.println("memberDTO = " + memberDTO);
-    memberService.cash(memberDTO);
-    return "redirect:/member/myPage";
+       boolean updateResult = memberService.updateCash(memberDTO);
+       if(updateResult) {
+           return "redirect:/member/myPage";
+       }else {
+           return "update-fail";
+       }
     }
 }
 

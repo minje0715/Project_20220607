@@ -57,8 +57,13 @@ public class MemberService {
         memberRepository.delete(mid);
     }
 
-    public void cash(MemberDTO memberDTO) {
-        System.out.println("memberDTO = " + memberDTO);
-        memberRepository.cash(memberDTO);
+    public boolean updateCash(MemberDTO memberDTO) {
+        System.out.println("ssmemberDTO = " + memberDTO);
+       int updateResult = memberRepository.updateCash(memberDTO);
+       if(updateResult > 0) {
+           return true;
+       }else {
+           return false;
+       }
     }
 }
