@@ -24,7 +24,7 @@
 <script>
     function chatStart() {
         var width = 600;
-        var height = 950;
+        var height = 850;
 
         var left = (window.screen.width / 2) - (width/2);
         var top = (window.screen.height / 4);
