@@ -81,7 +81,7 @@
                             </li>
                         </ul>
                         <li>
-                            <button onclick="itemList()" type="button" class="dropdown-item">■고객센터</button>
+                            <button onclick="serviceCenter()" type="button" class="dropdown-item">■고객센터</button>
                         </li>
                     </ul>
                 </div>
@@ -172,6 +172,9 @@
     }
     const itemList = () => {
         location.href = "/item/index";
+    }
+    const serviceCenter = () => {
+        location.href = "/member/serviceCenter";
     }
 </script>
 </html>
