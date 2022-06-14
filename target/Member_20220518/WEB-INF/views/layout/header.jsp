@@ -75,7 +75,7 @@
                             </li>
 
                             <li style="color: white">
-                                <button href="/" type="button" class="dropdown-item">
+                                <button onclick="d()" type="button" class="dropdown-item">
                                     <i style="color: white" class="bi bi-house-heart"></i>홈으로
                                 </button>
                             </li>
@@ -146,6 +146,10 @@
             location.href = "/order/findAll";
         }
     }
+    const d = () => {
+        location.href = "/";
+    }
+
     const findByAdmin = () => {
         location.href = "/board/findByAdmin";
     }
