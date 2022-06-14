@@ -20,6 +20,7 @@
             border-top: 1px solid #e4e4e4;
             background: #fbfbfb;
         }
+
         .tbTypeB tbody tr td {
             height: 18px;
             padding: 13px 20px;
@@ -34,6 +35,7 @@
             vertical-align: middle;
             border-color: inherit;
         }
+
         .tbTypeB {
             width: 100%;
             border-top: 2px solid #6b6b6b;
@@ -43,13 +45,14 @@
             border-spacing: 0;
             table-layout: fixed;
         }
+
         .pb_40
 
     </style>
 </head>
 <body>
 <div class="text-center">
-    <form name="cash" method="post" action="/member/cash" name="cashvv">
+    <form name="cash" method="post" action="/member/cash" >
         <div class="s_stit pt_20">요금제 선택 <span class="txt_p11 right">(VAT포함)</span></div>
         <table class="tbTypeB pb_40" style="">
             <tbody>
@@ -75,19 +78,20 @@
         </table>
         <div class="center pb_50">
             <input type="text" hidden="hidden" name="mid" value="${sessionScope.loginId}">
-            <input type="submit" onclick="cashrr()" class="btn btn-outline-danger mt-3"  style="width: 120px; height: 50px;" value="충전하기">
+            <button onclick="cashrr()" class="btn btn-outline-danger mt-3"
+                    style="width: 120px; height: 50px;">충전하기</button>
         </div>
     </form>
 </div>
 </body>
 <script>
     const cashrr = () => {
-        document.cashvv.action = "/member/cash";
-        document.cashvv.submit();
+        document.cash.action = "/member/cash";
+        document.cash.submit();
 
         setTimeout(function(){
-            window.close();
-            // window.open('about:link','_self').close();
+            // window.close();
+            window.open('about:link','_self').close();
         },100);
     }
 </script>

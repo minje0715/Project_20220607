@@ -120,6 +120,15 @@ public class MemberController {
            return "update-fail";
        }
     }
+    @GetMapping ("/serviceCenter")
+    public String serviceCenterForm() {
+        return "memberPages/serviceCenter";
+    }
+
+    @GetMapping ("/Chatting")
+    public String memberChatting() {
+        return "memberPages/chatting";
+    }
 }
 
 

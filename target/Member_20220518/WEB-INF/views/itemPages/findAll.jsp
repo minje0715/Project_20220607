@@ -41,8 +41,10 @@
                             </ul>
                             <div class="card-body card-center">
                                 <c:choose>
-                                    <c:when test="${sessionScope.loginId ne item.memberId}">
-                                        <button onclick="buyItem(${item.pid})" class="btn btn-outline-warning">구매</button>
+                                    <c:when test="${sessionScope.loginMemberId ne item.memberId}">
+                                        <button onclick="buyItem(${item.pid}, ${item.memberId})"
+                                                class="btn btn-outline-warning">구매
+                                        </button>
                                     </c:when>
                                 </c:choose>
                             </div>
@@ -103,11 +105,10 @@
 </div>
 </body>
 <script>
-    const buyItem = (itemPid) => {
-        const buyMember = '${sessionScope.loginId}';
-
+    const buyItem = (itemPid, itemMemberId) => {
+        const buyMember = '${sessionScope.loginId}'; // 구매자
         if (${sessionScope.loginId ne null}) {
-            location.href = "/item/buyItem?id=" + itemPid + "&mid=" + buyMember;
+            location.href = "/item/buyItem?id=" + itemPid + "&mid=" + buyMember + "&memberId=" + itemMemberId;
         } else {
             alert("로그인이 필요합니다");
             location.href = "/member/login";

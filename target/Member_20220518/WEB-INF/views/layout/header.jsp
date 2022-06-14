@@ -80,6 +80,9 @@
                                 </button>
                             </li>
                         </ul>
+                        <li>
+                            <button onclick="itemList()" type="button" class="dropdown-item">■고객센터</button>
+                        </li>
                     </ul>
                 </div>
                 <c:choose>

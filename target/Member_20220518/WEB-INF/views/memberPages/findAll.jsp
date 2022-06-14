@@ -24,6 +24,7 @@
             <th>이름</th>
             <th>이메일</th>
             <th>핸드폰</th>
+            <th>캐쉬</th>
             <th>회원삭제</th>
         </tr>
         <c:forEach items="${memberList}" var="member">
@@ -34,6 +35,7 @@
                 <td>${member.memberName}</td>
                 <td>${member.memberEmail}</td>
                 <td>${member.memberPhone}</td>
+                <td>${member.memberCash}</td>
                 <td><a href="/member/delete?id=${member.mid}">삭제</a></td>
             </tr>
         </c:forEach>

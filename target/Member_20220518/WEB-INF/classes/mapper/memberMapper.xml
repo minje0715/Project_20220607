@@ -32,5 +32,10 @@ values (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberP
     <update id="cashUpdate" parameterType="member">
         update member_table set memberCash = memberCash-#{itemPrice} where mid=#{mid}
     </update>
-
+    <select id="findByMemberId" parameterType="String" resultType="member">
+        select * from member_table where memberId=#{memberId}
+    </select>
+    <update id="sellUpdate" parameterType="member">
+        update member_table set memberCash = memberCash+#{itemPrice} where mid=#{mid}
+    </update>
 </mapper>

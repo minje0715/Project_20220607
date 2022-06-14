@@ -80,6 +80,9 @@
                                 </button>
                             </li>
                         </ul>
+                        <li>
+                            <button onclick="serviceCenter()" type="button" class="dropdown-item">■고객센터</button>
+                        </li>
                     </ul>
                 </div>
                 <c:choose>
@@ -169,6 +172,9 @@
     }
     const itemList = () => {
         location.href = "/item/index";
+    }
+    const serviceCenter = () => {
+        location.href = "/member/serviceCenter";
     }
 </script>
 </html>

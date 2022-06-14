@@ -35,7 +35,7 @@ public class MemberRepository {
     }
 
     public List<MemberDTO> findAll() {
-       return sql.selectList("Member.findAll");
+        return sql.selectList("Member.findAll");
     }
 
     public void delete(Long mid) {
@@ -44,7 +44,7 @@ public class MemberRepository {
 
     public int updateCash(MemberDTO memberDTO) {
         System.out.println("rrmemberDTO = " + memberDTO);
-       return sql.update("Member.updateCash", memberDTO);
+        return sql.update("Member.updateCash", memberDTO);
     }
 
     public void cashUpdate(MemberDTO buyMember) {
@@ -52,7 +52,7 @@ public class MemberRepository {
     }
 
     public MemberDTO findByMemberId(String memberId) {
-       return sql.selectOne("Member.findByMemberId", memberId);
+        return sql.selectOne("Member.findByMemberId", memberId);
     }
 
     public void sellMemberCashUpdate(MemberDTO sellMember) {
