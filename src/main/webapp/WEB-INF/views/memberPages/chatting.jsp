@@ -11,8 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<script>
+    <iframe src="https://service.dongledongle.com/qwer1234" frameborder="0" width="100%"></iframe>
 
-</script>
 </body>
 </html>
