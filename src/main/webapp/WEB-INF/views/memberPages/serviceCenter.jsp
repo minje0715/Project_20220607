@@ -17,14 +17,14 @@
 
 <div class="position-relative">
     <div class="position-absolute top-50 start-50 translate-middle">
-        <button onclick="chatStart()" class="btn btn-primary" style="margin-top: 500px">Bot Chat</button>
+        <button onclick="chatStart()" class="btn btn-primary" style="margin-top: 500px">상담사 연결</button>
     </div>
 </div>
 </body>
 <script>
     function chatStart() {
         var width = 600;
-        var height = 850;
+        var height = 600;
 
         var left = (window.screen.width / 2) - (width/2);
         var top = (window.screen.height / 4);

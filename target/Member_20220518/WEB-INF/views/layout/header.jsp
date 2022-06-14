@@ -175,7 +175,7 @@
         location.href = "/board/saveForm";
     }
     const itemList = () => {
-        location.href = "/item/index";
+        location.href = "/item/findAll";
     }
     const serviceCenter = () => {
         location.href = "/member/serviceCenter";
