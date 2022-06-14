@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<iframe src="https://service.dongledongle.com/qwer1234" frameborder="0" width="100%" height="500"></iframe>
+<iframe src="https://service.dongledongle.com/qwer1234" width="100%" height="500"></iframe>
                    <!--실행 두개 시켜서 하나는 관리자용 하나는 회원용으로 채팅 가능 -->
 </body>
 </html>
