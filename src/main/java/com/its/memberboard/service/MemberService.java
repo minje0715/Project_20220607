@@ -70,4 +70,13 @@ public class MemberService {
     public void cashUpdate(MemberDTO buyMember) {
         memberRepository.cashUpdate(buyMember);
     }
+
+    public MemberDTO findByMemberId(String memberId) {
+       MemberDTO memberDTO = memberRepository.findByMemberId(memberId);
+       return memberDTO;
+    }
+
+    public void sellMemberCashUpdate(MemberDTO sellMember) {
+        memberRepository.sellMemberCashUpdate(sellMember);
+    }
 }

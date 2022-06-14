@@ -56,16 +56,43 @@ public class ItemController {
         model.addAttribute("paging", paging);
         return "itemPages/findAll";
     }
+//    @GetMapping ("/buyItem")
+//    public String buyItem(@RequestParam("id") Long pid,
+//                            @RequestParam("mid") Long mid) {
+//        MemberDTO buyMember = memberService.findById(mid);
+//            System.out.println("buyMember = " + buyMember);
+//        Long itemResult = itemService.findById(pid).getItemPrice();
+//        if(buyMember.getMemberCash() > itemService.findById(pid).getItemPrice()) {
+//            itemService.delete(pid);
+//            buyMember.setItemPrice(itemResult);
+//            memberService.cashUpdate(buyMember);
+//
+//            return "redirect:/item/findAll";
+//        }else {
+//            return "buy-fail";
+//        }
+//    }
+
     @GetMapping ("/buyItem")
     public String buyItem(@RequestParam("id") Long pid,
-                            @RequestParam("mid") Long mid) {
-        MemberDTO buyMember = memberService.findById(mid);
+                            @RequestParam("mid") Long mid, @RequestParam("memberId") String memberId) {
+        MemberDTO buyMember = memberService.findById(mid); // 구매자 아이디값 조회
             System.out.println("buyMember = " + buyMember);
+        System.out.println("pid = " + pid + ", mid = " + mid + ", memberId = " + memberId);
+            MemberDTO sellMember = memberService.findByMemberId(memberId); // 판매자 아이디값 조회
+        System.out.println("sellMember = " + sellMember);
+
         Long itemResult = itemService.findById(pid).getItemPrice();
         if(buyMember.getMemberCash() > itemService.findById(pid).getItemPrice()) {
-            itemService.delete(pid);
-            buyMember.setItemPrice(itemResult);
-            memberService.cashUpdate(buyMember);
+            itemService.delete(pid); // 판매된 아이템 리스트에서 삭제
+
+            sellMember.setItemPrice(itemResult); // 판매된 아이템 가격 set
+            System.out.println("itemResult = " + itemResult);
+            memberService.sellMemberCashUpdate(sellMember); // 판매한 아이템 가격 업데이트
+            System.out.println(sellMember);
+
+            buyMember.setItemPrice(itemResult); // 구매한 아이템 가격 구매자 돈에서 차감
+            memberService.cashUpdate(buyMember); // 구매후 돈 업데이트
 
             return "redirect:/item/findAll";
         }else {

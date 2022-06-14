@@ -50,4 +50,12 @@ public class MemberRepository {
     public void cashUpdate(MemberDTO buyMember) {
         sql.update("Member.cashUpdate", buyMember);
     }
+
+    public MemberDTO findByMemberId(String memberId) {
+       return sql.selectOne("Member.findByMemberId", memberId);
+    }
+
+    public void sellMemberCashUpdate(MemberDTO sellMember) {
+        sql.update("Member.sellUpdate", sellMember);
+    }
 }
