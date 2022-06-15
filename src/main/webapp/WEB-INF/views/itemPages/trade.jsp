@@ -15,16 +15,19 @@
 <body>
 <div class="container">
 <h2 class="text-center">거래내역</h2>
-    <table class="table">
-        <tr>
-            <th>거래번호</th>
-            <th>거래종류</th>
-            <th>아이템</th>
-            <th>아이템이름</th>
-            <th>회원</th>
-            <th>가격</th>
-            <th>거래날짜</th>
-        </tr>
+<%--    <table class="table">--%>
+<%--        <tr>--%>
+<%--            <th>거래번호</th>--%>
+<%--            <th>거래종류</th>--%>
+<%--            <th>아이템</th>--%>
+<%--            <th>아이템이름</th>--%>
+<%--            <th>회원</th>--%>
+<%--            <th>가격</th>--%>
+<%--            <th>거래날짜</th>--%>
+<%--        </tr>--%>
+<%--    </table>--%>
+
+
 
 </body>
 </html>

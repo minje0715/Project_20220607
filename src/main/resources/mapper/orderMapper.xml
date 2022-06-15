@@ -4,5 +4,11 @@
 
 
 <mapper namespace="Order">
-
+<insert id="save" parameterType="order">
+    insert into order_table (trade, itemName, memberId, itemPrice, itemCreatedTime)
+values (#{trade}, #{itemName}, #{memberId}, #{itemPrice}, now())
+</insert>
+    <select id="findAll" parameterType="order">
+        select * from order_table
+    </select>
 </mapper>
