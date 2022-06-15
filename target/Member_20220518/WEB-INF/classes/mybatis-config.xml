@@ -8,6 +8,5 @@
         <typeAlias type="com.its.memberboard.dto.CommentDTO" alias="comment"></typeAlias>
         <typeAlias type="com.its.memberboard.dto.ItemDTO" alias="item"></typeAlias>
         <typeAlias type="com.its.memberboard.dto.OrderDTO" alias="order"></typeAlias>
-
     </typeAliases>
 </configuration>

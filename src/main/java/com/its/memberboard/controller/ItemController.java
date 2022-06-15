@@ -23,8 +23,8 @@ public class ItemController {
     @Autowired
     private MemberService memberService;
 
-   @Autowired
-   private OrderService orderService;
+    @Autowired
+    private OrderService orderService;
 
     @GetMapping("/index")
     public String index() {
@@ -46,13 +46,13 @@ public class ItemController {
 //        System.out.println("ccitemDTO = " + itemDTO);
         itemService.saveFile(itemDTO);
 
-        
+
         OrderDTO newOrderDTO = new OrderDTO();
         newOrderDTO.setTrade(0);
         newOrderDTO.setItemName(itemDTO.getItemName());
-        newOrderDTO.setMemberId((String)session.getAttribute("loginMemberId"));
+        newOrderDTO.setMemberId((String) session.getAttribute("loginMemberId"));
         newOrderDTO.setItemPrice(itemDTO.getItemPrice());
-        System.out.println("newOrderDTO = " + newOrderDTO);
+//        System.out.println("newOrderDTO = " + newOrderDTO);
         orderService.save(newOrderDTO);
         return "redirect:/item/findAll";
     }
@@ -97,8 +97,10 @@ public class ItemController {
             newOrderDTO.setItemName(itemDTO.getItemName());
             newOrderDTO.setMemberId(buyMember.getMemberId());
             newOrderDTO.setItemPrice(itemDTO.getItemPrice());
-            System.out.println("newOrderDTO = " + newOrderDTO);
+//            System.out.println("newOrderDTO = " + newOrderDTO);
             orderService.save(newOrderDTO);
+
+
             itemService.delete(pid); // 판매된 아이템 리스트에서 삭제
             return "redirect:/item/findAll";
         } else {
@@ -107,9 +109,13 @@ public class ItemController {
     }
 
     @GetMapping("/tradeAll")
-    public String tradeAll(Model model) {
-      List<OrderDTO> tradeList = orderService.findAll();
-      model.addAttribute("tradeList", tradeList);
+    public String tradeAll(Model model, @RequestParam(value = "page", required = false,
+            defaultValue = "1") int page) {
+        List<OrderDTO> tradeList = orderService.findAll();
+        PageDTO paging = orderService.paging(page);
+        model.addAttribute("tradeList", tradeList);
+        model.addAttribute("paging", paging);
+
         return "/itemPages/trade";
     }
 }

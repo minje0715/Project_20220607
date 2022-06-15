@@ -18,6 +18,7 @@ import java.util.Map;
 public class ItemService {
     @Autowired
     private ItemRepository itemRepository;
+
     public void saveFile(ItemDTO itemDTO) throws IOException {
         MultipartFile itemFile = itemDTO.getItemFile(); // 파일을 꺼낸다
         String itemFileName = itemFile.getOriginalFilename(); // 2.
@@ -32,7 +33,7 @@ public class ItemService {
     }
 
     public List<ItemDTO> findAll() {
-       return itemRepository.findAll();
+        return itemRepository.findAll();
     }
 
     private static final int PAGE_LIMIT = 9;
@@ -43,7 +44,7 @@ public class ItemService {
      * 요청한 페이지에 해당하는 글 목록을 DB에서 가져오는 역할
      */
     public List<ItemDTO> pagingList(int page) {
-        int pagingStart = (page-1) * PAGE_LIMIT;
+        int pagingStart = (page - 1) * PAGE_LIMIT;
         Map<String, Integer> pagingParam = new HashMap<>();
         pagingParam.put("start", pagingStart);
         pagingParam.put("limit", PAGE_LIMIT);
@@ -55,12 +56,12 @@ public class ItemService {
     public PageDTO paging(int page) {
         int itemCount = itemRepository.itemCount(); // 글 갯수 조회
         // 필요한 전체 페이지 갯수
-        int maxPage = (int)(Math.ceil((double)itemCount / PAGE_LIMIT));
+        int maxPage = (int) (Math.ceil((double) itemCount / PAGE_LIMIT));
         // 시작페이지 1 4 7 10
-        int startPage = (((int)(Math.ceil((double)page / BLOCK_LIMIT))) - 1) * BLOCK_LIMIT + 1;
+        int startPage = (((int) (Math.ceil((double) page / BLOCK_LIMIT))) - 1) * BLOCK_LIMIT + 1;
         // 끝페이지 3 6 9 12
         int endPage = startPage + BLOCK_LIMIT - 1;
-        if(endPage > maxPage)
+        if (endPage > maxPage)
             endPage = maxPage;
         PageDTO paging = new PageDTO();
         paging.setPage(page);
@@ -71,7 +72,7 @@ public class ItemService {
     }
 
     public ItemDTO findById(Long pid) {
-      return itemRepository.findById(pid);
+        return itemRepository.findById(pid);
     }
 
     public void delete(Long pid) {

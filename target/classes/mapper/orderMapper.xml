@@ -4,5 +4,17 @@
 
 
 <mapper namespace="Order">
-
+<insert id="save" parameterType="order">
+    insert into order_table (trade, itemName, memberId, itemPrice, itemCreatedTime)
+values (#{trade}, #{itemName}, #{memberId}, #{itemPrice}, now())
+</insert>
+    <select id="findAll" resultType="order">
+        select * from order_table order by itemCreatedTime desc;
+    </select>
+    <select id="count" resultType="int">
+        select count(oid) from order_table
+    </select>
+    <select id="pagingList" parameterType="java.util.HashMap" resultType="item">
+        select * from order_table order by oid desc limit #{start}, #{limit}
+        </select>
 </mapper>
