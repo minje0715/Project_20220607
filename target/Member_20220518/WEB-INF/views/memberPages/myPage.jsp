@@ -48,7 +48,7 @@
 <script>
     const openPopup = () => {
         var width = 650;
-        var height = 270;
+        var height = 550;
 
         var left = (window.screen.width / 2) - (width/2);
         var top = (window.screen.height / 4);

@@ -10,6 +10,7 @@
 
 <html>
 <head>
+    <script src="/resources/js/jquery.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <title>Title</title>
@@ -118,10 +119,10 @@
                 document.cash.action = "/member/cash";
                 document.cash.submit();
 
-                setTimeout(function(){
+                setTimeout(function () {
                     window.close();
                     // window.open('about:link','_self').close();
-                },100);
+                }, 3000);
             } else {
                 var msg = '결제에 실패하였습니다.';
                 alert(msg);

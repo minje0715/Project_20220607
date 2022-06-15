@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,6 +20,9 @@ public class ItemController {
     private ItemService itemService;
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private OrderService orderService;
 
 
     @GetMapping("/index")
@@ -40,7 +42,7 @@ public class ItemController {
 
     @PostMapping("/save") // 아이템 등록
     public String saveFile(@ModelAttribute ItemDTO itemDTO) throws IOException {
-        System.out.println("ccitemDTO = " + itemDTO);
+//        System.out.println("ccitemDTO = " + itemDTO);
         itemService.saveFile(itemDTO);
         return "redirect:/item/findAll";
     }
@@ -55,24 +57,8 @@ public class ItemController {
         model.addAttribute("paging", paging);
         return "itemPages/findAll";
     }
-//    @GetMapping ("/buyItem")
-//    public String buyItem(@RequestParam("id") Long pid,
-//                            @RequestParam("mid") Long mid) {
-//        MemberDTO buyMember = memberService.findById(mid);
-//            System.out.println("buyMember = " + buyMember);
-//        Long itemResult = itemService.findById(pid).getItemPrice();
-//        if(buyMember.getMemberCash() > itemService.findById(pid).getItemPrice()) {
-//            itemService.delete(pid);
-//            buyMember.setItemPrice(itemResult);
-//            memberService.cashUpdate(buyMember);
-//
-//            return "redirect:/item/findAll";
-//        }else {
-//            return "buy-fail";
-//        }
-//    }
 
-    @GetMapping("/buyItem")
+    @GetMapping("/buyItem") // 아이템 구매 메서드
     public String buyItem(@RequestParam("id") Long pid,
                           @RequestParam("mid") Long mid, @RequestParam("memberId") String memberId) {
         MemberDTO buyMember = memberService.findById(mid); // 구매자 아이디값 조회
@@ -85,19 +71,25 @@ public class ItemController {
         if (buyMember.getMemberCash() > itemService.findById(pid).getItemPrice()) {
             itemService.delete(pid); // 판매된 아이템 리스트에서 삭제
 
+
+
             sellMember.setItemPrice(itemResult); // 판매된 아이템 가격 set
-            System.out.println("itemResult = " + itemResult);
+//            System.out.println("itemResult = " + itemResult);
             memberService.sellMemberCashUpdate(sellMember); // 판매한 아이템 가격 업데이트
-            System.out.println(sellMember);
+//            System.out.println(sellMember);
 
             buyMember.setItemPrice(itemResult); // 구매한 아이템 가격 구매자 돈에서 차감
             memberService.cashUpdate(buyMember); // 구매후 돈 업데이트
 
-            
 
             return "redirect:/item/findAll";
         } else {
             return "buy-fail";
         }
+    }
+
+    @GetMapping("/tradeAll")
+    public String tradeAll() {
+        return "/itemPages/trade";
     }
 }
