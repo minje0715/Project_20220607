@@ -14,7 +14,7 @@ values (#{trade}, #{itemName}, #{memberId}, #{itemPrice}, now())
     <select id="count" resultType="int">
         select count(oid) from order_table
     </select>
-    <select id="pagingList" parameterType="java.util.HashMap" resultType="item">
+    <select id="pagingList" parameterType="java.util.HashMap" resultType="order">
         select * from order_table order by oid desc limit #{start}, #{limit}
         </select>
 </mapper>

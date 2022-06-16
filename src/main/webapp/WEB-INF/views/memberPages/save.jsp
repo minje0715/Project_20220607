@@ -33,7 +33,7 @@
 <div class="width container mt-5">
     <form action="/member/save" method="post">
         <input class="form-control mb-2" type="text" name="memberId" id="memberId" placeholder="아이디"
-               onblur="duplicateCheck()" required>
+               onblur="duplicateCheck()"autofocus required>
         <span id="id-check-result"></span>
         <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호" required>
         <input class="form-control mb-2" type="text"  placeholder="비밀번호확인" required>

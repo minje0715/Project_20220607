@@ -27,7 +27,7 @@ public class OrderService {
 
     private static final int PAGE_LIMIT = 10;
     // 한 페이지에 보여줄 글 갯수
-    private static final int BLOCK_LIMIT = 3;
+    private static final int BLOCK_LIMIT = 10;
 
     public PageDTO paging(int page) {
         int tradeCount = orderRepository.tradeCount(); // 글 갯수 조회

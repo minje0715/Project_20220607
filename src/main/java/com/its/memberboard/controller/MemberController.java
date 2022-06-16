@@ -27,7 +27,7 @@ public class MemberController {
     public String save(@ModelAttribute MemberDTO memberDTO) {
         boolean saveResult = memberService.save(memberDTO);
         if (saveResult) {
-            return "boardPages/list";
+            return "index";
         } else {
             return "memberPages/save-fail";
         }
@@ -43,6 +43,11 @@ public class MemberController {
     public String loginForm() {
         return "memberPages/login";
     }
+    @PostMapping("/loginCheck")
+    public @ResponseBody String loginCheck(@ModelAttribute MemberDTO member) {
+       String loginResult = memberService.loginCheck(member);
+        return loginResult;
+    }
 
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
@@ -52,7 +57,7 @@ public class MemberController {
             session.setAttribute("loginId", loginMember.getMid());
             session.setAttribute("loginMemberId", loginMember.getMemberId());
             session.setAttribute("loginMemberPassword", loginMember.getMemberPassword());
-            return "index";
+                return "index";
         } else {
             return "login-fail";
         }
@@ -62,7 +67,7 @@ public class MemberController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/board/findByAdmin";
+        return "index";
     }
 
     @GetMapping("/myPage")
@@ -110,22 +115,23 @@ public class MemberController {
         return "memberPages/cash";
     }
 
-        @PostMapping ("/cash")
+    @PostMapping("/cash")
     public String cash(@ModelAttribute MemberDTO memberDTO) {
         System.out.println("memberDTO = " + memberDTO);
-       boolean updateResult = memberService.updateCash(memberDTO);
-       if(updateResult) {
-           return "redirect:/member/myPage";
-       }else {
-           return "update-fail";
-       }
+        boolean updateResult = memberService.updateCash(memberDTO);
+        if (updateResult) {
+            return "redirect:/member/myPage";
+        } else {
+            return "update-fail";
+        }
     }
-    @GetMapping ("/serviceCenter")
+
+    @GetMapping("/serviceCenter")
     public String serviceCenterForm() {
         return "memberPages/serviceCenter";
     }
 
-    @GetMapping ("/Chatting")
+    @GetMapping("/Chatting")
     public String memberChatting() {
         return "memberPages/chatting";
     }

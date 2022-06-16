@@ -11,8 +11,11 @@ values (#{memberId}, #{memberPassword}, #{memberName}, #{memberEmail}, #{memberP
     <select id="duplicateCheck" parameterType="String" resultType="String">
         select memberId from member_table where memberId=#{memberId}
     </select>
+    <select id="loginCheck" parameterType="member" resultType="member">
+        select * from member_table where memberId=#{memberId} and memberPassword = #{memberPassword}
+    </select>
     <select id="login" parameterType="member" resultType="member">
-        select * from member_table where memberId=#{memberId} and memberPassword =#{memberPassword}
+        select * from member_table where memberId=#{memberId}
     </select>
     <select id="findById" parameterType="Long" resultType="member">
         select * from member_table where mid=#{mid}

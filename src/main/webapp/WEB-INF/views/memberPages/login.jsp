@@ -105,13 +105,42 @@
 </head>
 <body>
 <div class="login-card"><h1>로그인</h1><br>
-    <form action="/member/login" method="post">
-        <input type="text" id="memberId" name="memberId" placeholder="아이디" required>
+    <form name="loginForm" action="/member/login" method="post">
+            <input type="text" id="memberId" name="memberId" placeholder="아이디"autofocus required>
         <input type="password" id="memberPassword" name="memberPassword" placeholder="비밀번호" required>
-        <button class="login-submit btn btn-lg d-grid mx-auto">로그인</button>
+        <input type="button" onclick="goAjax()" class="login-submit btn btn-lg d-grid mx-auto" value="로그인">
     </form>
+    <div>
+        <a href="/member/findId">아이디찾기</a>｜<a href="/member/findPw">비밀번호찾기</a>
+    </div>
 </div>
 </body>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script>
+    const goAjax = () => {
+        const id = document.getElementById("memberId").value;
+        const pw = document.getElementById("memberPassword").value;
+
+        console.log(id, pw);
+
+        $.ajax({
+            type: "post",
+            url: "/member/loginCheck",
+            data: {"memberId": id, "memberPassword":pw},
+            dataType: "text",
+            success: function (loginResult) {
+                if (loginResult == "ok") {
+                    alert("로그인이 성공하였습니다");
+                    loginForm.submit();
+                } else {
+                    alert("아이디와 비밀번호를 확인해주세요");
+                }
+            },
+            error: function (){
+                alert("error");
+            }
+        })
+    }
+</script>
 </html>

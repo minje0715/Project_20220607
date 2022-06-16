@@ -24,6 +24,9 @@ public class MemberRepository {
     public MemberDTO login(MemberDTO memberDTO) {
         return sql.selectOne("Member.login", memberDTO);
     }
+    public MemberDTO loginCheck(MemberDTO member) {
+       return sql.selectOne("Member.loginCheck", member);
+    }
 
     public MemberDTO findById(Long findByMember) {
         return sql.selectOne("Member.findById", findByMember);
@@ -58,4 +61,5 @@ public class MemberRepository {
     public void sellMemberCashUpdate(MemberDTO sellMember) {
         sql.update("Member.sellUpdate", sellMember);
     }
+
 }

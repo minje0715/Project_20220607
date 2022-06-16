@@ -38,8 +38,8 @@
                 <td>${member.memberEmail}</td>
                 <td>${member.memberPhone}</td>
                 <td>${member.memberCash}</td>
-                <td><button class="btn btn-outline-warning"><a href="/member/updateForm">수정</a></button></td>
-                <td><button class="btn btn-outline-danger"><a href="/member/delete?id=${member.mid}">회원탈퇴</a></button></td>
+                <td><button class="btn btn-check"><a href="/member/updateForm">수정</a></button></td>
+                <td><button class="btn btn-danger"><a href="/member/delete?id=${member.mid}">회원탈퇴</a></button></td>
             </tr>
     </table>
     <button onclick="openPopup()" class="btn btn-danger"  style="width: 120px; height: 50px;">캐쉬 충전</button>

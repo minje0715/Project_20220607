@@ -42,7 +42,7 @@
                             <div class="card-body card-center">
                                 <c:choose>
                                     <c:when test="${sessionScope.loginMemberId ne item.memberId}">
-                                        <button onclick="buyItem(${item.pid}, ${item.memberId})"
+                                        <button onclick="buyItem('${item.pid}', '${item.memberId}', '${item.itemPrice}')"
                                                 class="btn btn-outline-warning">구매
                                         </button>
                                     </c:when>
@@ -68,7 +68,7 @@
             <%--         1페이지가 아닌 경우에는 [이전]을 클릭하면 현재 페이지보다 1 작은 페이지 요청--%>
             <c:otherwise>
                 <li class="page-item">
-                    <a class="page-link" href="/item/findAll?page${paging.page-1}">[이전]</a>
+                    <a class="page-link" href="/item/findAll?page=${paging.page-1}">[이전]</a>
                 </li>
             </c:otherwise>
         </c:choose>
@@ -105,10 +105,16 @@
 </div>
 </body>
 <script>
-    const buyItem = (itemPid, itemMemberId) => {
+    const buyItem = (itemPid, itemMemberId, itemPrice) => {
         const buyMember = '${sessionScope.loginId}'; // 구매자
         if (${sessionScope.loginId ne null}) {
-            location.href = "/item/buyItem?id=" + itemPid + "&mid=" + buyMember + "&memberId=" + itemMemberId;
+            if ('${member.memberCash}' >= itemPrice) {
+                location.href = "/item/buyItem?id=" + itemPid + "&mid=" + buyMember + "&memberId=" + itemMemberId;
+            } else {
+                alert("잔액이 부족합니다\n" +
+                    "충전하기 위한 페이지로 이동합니다");
+                location.href = "/member/myPage";
+            }
         } else {
             alert("로그인이 필요합니다");
             location.href = "/member/login";

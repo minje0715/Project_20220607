@@ -28,6 +28,14 @@ public class MemberService {
             return "no";
         }
     }
+    public String loginCheck(MemberDTO member) {
+      MemberDTO loginResult = memberRepository.loginCheck(member);
+      if(loginResult != null){
+          return "ok";
+      }else{
+          return "no";
+      }
+    }
 
     public MemberDTO login(MemberDTO memberDTO) {
        MemberDTO loginMember = memberRepository.login(memberDTO);
@@ -79,4 +87,5 @@ public class MemberService {
     public void sellMemberCashUpdate(MemberDTO sellMember) {
         memberRepository.sellMemberCashUpdate(sellMember);
     }
+
 }

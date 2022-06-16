@@ -60,11 +60,14 @@ public class ItemController {
 
     @GetMapping("/findAll") // 판매등록 아이템 전체목록
     public String findAll(Model model, @RequestParam(value = "page", required = false,
-            defaultValue = "1") int page) {
+            defaultValue = "1") int page, HttpSession session) {
         List<ItemDTO> itemDTOList = itemService.pagingList(page);
         PageDTO paging = itemService.paging(page);
+        MemberDTO memberDTO = memberService.findById((Long)session.getAttribute("loginId"));
         model.addAttribute("itemList", itemDTOList);
         model.addAttribute("paging", paging);
+        model.addAttribute("member", memberDTO);
+        System.out.println(paging);
         return "itemPages/findAll";
     }
 
@@ -98,14 +101,17 @@ public class ItemController {
             newOrderDTO.setMemberId(buyMember.getMemberId());
             newOrderDTO.setItemPrice(itemDTO.getItemPrice());
 //            System.out.println("newOrderDTO = " + newOrderDTO);
-            orderService.save(newOrderDTO);
+            orderService.save(newOrderDTO);   // 객체에 거래내역값들을 담아서 저장
 
 
             itemService.delete(pid); // 판매된 아이템 리스트에서 삭제
-            return "redirect:/item/findAll";
-        } else {
-            return "buy-fail";
         }
+            return "redirect:/item/findAll";
+    }
+
+    @GetMapping("/buy-fail")
+    public String buyFail() {
+        return "memberPages/myPage";
     }
 
     @GetMapping("/tradeAll")

@@ -127,10 +127,10 @@
 </header>
 </body>
 <script>
-    const a = () => {
+    const a = () => { // 구매
             location.href = "/item/findAll";
     }
-    const b = () => {
+    const b = () => { // 판매
         if (${sessionScope.loginId eq null}) {
             alert("로그인이 필요합니다")
             location.href = "/member/login";
@@ -138,7 +138,7 @@
             location.href = "/item/itemSave";
         }
     }
-    const c = () => {
+    const c = () => { // 거래내역
         if (${sessionScope.loginId eq null}) {
             alert("로그인이 필요합니다")
             location.href = "/member/login";
@@ -146,7 +146,7 @@
             location.href = "/item/tradeAll";
         }
     }
-    const d = () => {
+    const d = () => { // 홈
         location.href = "/";
     }
 
@@ -171,13 +171,13 @@
     const boardList = () => {
         location.href = "/board/list";
     }
-    const adminSave = () => {
+    const adminSave = () => { // 공지사항작성
         location.href = "/board/saveForm";
     }
     const itemList = () => {
         location.href = "/item/findAll";
     }
-    const serviceCenter = () => {
+    const serviceCenter = () => { // 고객센터
         location.href = "/member/serviceCenter";
     }
 </script>
