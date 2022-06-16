@@ -13,36 +13,140 @@
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <script src="/resources/js/jquery.js"></script>
     <style>
-        button {
-            background-color: #8aa1a1;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            width: 100%;
-            height: 35px;
-            font-size: 14pt;
-            margin-top: 100px;
+        .page {
+            width: 300px;
+            height: 585px;
+            position: absolute;
+            left: 0.3%;
+            top: 40%;
+            /*margin-left:-150px;*/
+            /*margin-top:-150px;*/
+            display: flex;
+            justify-content: center;
         }
-        .width {
-            max-width: 700px;
+
+
+        /* add default color for animation start  */
+
+
+        /* toggle this class */
+
+        .color-bg-start {
+            background-color: salmon;
+        }
+
+
+        /* toggle class bg-animate-color */
+
+        .bg-animate-color {
+            animation: random-bg .5s linear infinite;
+        }
+
+
+        /* add animation to bg color  */
+
+        @keyframes random-bg {
+            from {
+                filter: hue-rotate(0);
+            }
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        .fun-btn {
+            /* change bg color to get different hues    */
+            background-color: salmon;
+            color: white;
+            padding: 0.6em 6.4em;
+            border: none;
+            transition: all .3s ease;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            outline: none;
+            align-self: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .fun-btn:hover {
+            animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
+        }
+
+        .start-fun {
+            background-color: #fff !important;
+            /* change color of button text when fun is started   */
+            color: salmon !important;
+        }
+
+        /* pulsating effect on button */
+        @keyframes grow {
+            0% {
+                transform: scale(1);
+            }
+            14% {
+                transform: scale(1.3);
+            }
+            28% {
+                transform: scale(1);
+            }
+            42% {
+                transform: scale(1.3);
+            }
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        /*button {*/
+        /*    border: none;*/
+        /*    border-radius: 5px;*/
+        /*    width: 100%;*/
+        /*    height: 35px;*/
+        /*    font-size: 14pt;*/
+        /*    margin-top: 100px;*/
+        /*}*/
+
+        /*.width {*/
+        /*    max-width: 700px;*/
+        /*}*/
+        .container {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 50%;
+            top: 35%;
+            margin-left: -150px;
+            margin-top: -150px;
         }
     </style>
 </head>
 <body>
 
-<div class="width container mt-5">
+<div class="container">
+
     <form action="/member/save" method="post">
-        <input class="form-control mb-2" type="text" name="memberId" id="memberId" placeholder="아이디"
-               onblur="duplicateCheck()"autofocus required>
+        <input class="form-control mb-3l" type="text" name="memberId" id="memberId" placeholder="아이디"
+               onblur="duplicateCheck()" required>
         <span id="id-check-result"></span>
-        <input class="form-control mb-2" type="text" name="memberPassword" placeholder="비밀번호" required>
-        <input class="form-control mb-2" type="text"  placeholder="비밀번호확인" required>
-        <input class="form-control mb-2" type="text" name="memberName" placeholder="이름" required>
-        <input class="form-control mb-2" type="text" name="memberBirth" placeholder="생년월일" required>
-        <input class="form-control mb-2" type="text" name="memberEmail" placeholder="이메일" required>
-        <input class="form-control mb-2" type="tel" name="memberPhone"
+
+        <input class="form-control mb-3" type="text" name="memberPassword" placeholder="비밀번호" required>
+
+        <input class="form-control mb-3" type="text" placeholder="비밀번호확인" required>
+
+        <input class="form-control mb-3" type="text" name="memberName" placeholder="이름" required>
+
+        <input class="form-control mb-3" type="text" name="memberBirth" placeholder="생년월일" required>
+
+        <input class="form-control mb-3" type="text" name="memberEmail" placeholder="이메일" required>
+
+        <input class="form-control mb-3" type="tel" name="memberPhone"
                required pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" title="###-####-####" placeholder="전화번호">
-        <button>가입</button>
+
+        <div class="page">
+            <button class="fun-btn">가입하기</button>
+        </div>
     </form>
 </div>
 </body>
