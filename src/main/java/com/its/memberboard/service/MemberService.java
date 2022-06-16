@@ -42,6 +42,16 @@ public class MemberService {
        return loginMember;
     }
 
+    public MemberDTO findId(MemberDTO memberDTO) {
+       MemberDTO findResult = memberRepository.findId(memberDTO);
+       return findResult;
+    }
+
+    public MemberDTO findPw(MemberDTO memberDTO) {
+      MemberDTO findResult = memberRepository.findPw(memberDTO);
+      return findResult;
+    }
+
     public MemberDTO findById(Long findByMember) {
        MemberDTO memberDTO = memberRepository.findById(findByMember);
        return memberDTO;
@@ -87,5 +97,6 @@ public class MemberService {
     public void sellMemberCashUpdate(MemberDTO sellMember) {
         memberRepository.sellMemberCashUpdate(sellMember);
     }
+
 
 }

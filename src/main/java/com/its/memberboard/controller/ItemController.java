@@ -108,11 +108,7 @@ public class ItemController {
         }
             return "redirect:/item/findAll";
     }
-
-    @GetMapping("/buy-fail")
-    public String buyFail() {
-        return "memberPages/myPage";
-    }
+    
 
     @GetMapping("/tradeAll")
     public String tradeAll(Model model, @RequestParam(value = "page", required = false,

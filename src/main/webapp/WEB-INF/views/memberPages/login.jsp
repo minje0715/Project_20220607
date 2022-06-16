@@ -111,7 +111,7 @@
         <input type="button" onclick="goAjax()" class="login-submit btn btn-lg d-grid mx-auto" value="로그인">
     </form>
     <div>
-        <a href="/member/findId">아이디찾기</a>｜<a href="/member/findPw">비밀번호찾기</a>
+        <a href="/member/findIdForm">아이디찾기</a>｜<a href="/member/findPwForm">비밀번호찾기</a>
     </div>
 </div>
 </body>

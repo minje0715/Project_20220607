@@ -17,6 +17,12 @@ values (#{memberId}, #{memberPassword}, #{memberName},#{memberBirth}, #{memberEm
     <select id="login" parameterType="member" resultType="member">
         select * from member_table where memberId=#{memberId}
     </select>
+    <select id="findId" parameterType="member" resultType="member">
+        select * from member_table where memberName=#{memberName} and memberEmail=#{memberEmail}
+    </select>
+    <select id="findPw" parameterType="member" resultType="member">
+        select * from member_table where memberName=#{memberName} and memberId=#{memberId}
+    </select>
     <select id="findById" parameterType="Long" resultType="member">
         select * from member_table where mid=#{mid}
     </select>

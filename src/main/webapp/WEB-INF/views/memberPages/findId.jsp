@@ -104,43 +104,37 @@
     </style>
 </head>
 <body>
-<div class="login-card"><h1>로그인</h1><br>
-    <form name="loginForm" action="/member/login" method="post">
-            <input type="text" id="memberId" name="memberId" placeholder="아이디"autofocus required>
-        <input type="password" id="memberPassword" name="memberPassword" placeholder="비밀번호" required>
-        <input type="button" onclick="goAjax()" class="login-submit btn btn-lg d-grid mx-auto" value="로그인">
+<div class="login-card"><h1>아이디찾기</h1><br>
+    <form name="findIdForm" action="/member/findId" method="post">
+        <input type="text" id="memberName" name="memberName" placeholder="이름"autofocus required>
+        <input type="text" id="memberEmail" name="memberEmail" placeholder="이메일" required>
+        <input type="button" onclick="findResult()" class="login-submit btn btn-lg d-grid mx-auto" value="아이디찾기">
     </form>
-    <div>
-        <a href="/member/findIdForm">아이디찾기</a>｜<a href="/member/findPwForm">비밀번호찾기</a>
-    </div>
 </div>
 </body>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-<script>
-    const goAjax = () => {
-        const id = document.getElementById("memberId").value;
-        const pw = document.getElementById("memberPassword").value;
 
-        console.log(id, pw);
+
+<script>
+    const findResult = () => {
+        const name = document.getElementById("memberName").value;
+        const email = document.getElementById("memberEmail").value;
 
         $.ajax({
             type: "post",
-            url: "/member/loginCheck",
-            data: {"memberId": id, "memberPassword":pw},
+            url: "/member/findId",
+            data: {"memberName": name, "memberEmail":email},
             dataType: "text",
-            success: function (loginResult) {
-                if (loginResult == "ok") {
-                    alert("로그인이 성공하였습니다");
-                    loginForm.submit();
+            success: function (findResult) {
+                if (findResult != "no") {
+                    alert("아이디는 " + findResult + " 입니다");
                 } else {
-                    alert("아이디와 비밀번호를 확인해주세요");
+                    alert("해당 아이디 또는 이메일이 없습니다");
                 }
-            },
-            error: function (){
-                alert("error");
             }
-        })
+
+        });
     }
 </script>
 </html>

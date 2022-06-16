@@ -43,9 +43,10 @@ public class MemberController {
     public String loginForm() {
         return "memberPages/login";
     }
+
     @PostMapping("/loginCheck")
     public @ResponseBody String loginCheck(@ModelAttribute MemberDTO member) {
-       String loginResult = memberService.loginCheck(member);
+        String loginResult = memberService.loginCheck(member);
         return loginResult;
     }
 
@@ -57,9 +58,40 @@ public class MemberController {
             session.setAttribute("loginId", loginMember.getMid());
             session.setAttribute("loginMemberId", loginMember.getMemberId());
             session.setAttribute("loginMemberPassword", loginMember.getMemberPassword());
-                return "index";
+            return "index";
         } else {
             return "login-fail";
+        }
+    }
+
+    @GetMapping("/findIdForm")
+    public String findIdForm() {
+        return "memberPages/findId";
+    }
+
+    @PostMapping("findIdForm")
+    public @ResponseBody String findId(@ModelAttribute MemberDTO memberDTO) {
+        MemberDTO findResult = memberService.findId(memberDTO);
+        System.out.println("findResult = " + findResult);
+        if (findResult != null) {
+            return findResult.getMemberId();
+        } else {
+            return "no";
+        }
+    }
+
+    @GetMapping("/findPwForm")
+    public String findPwForm() {
+        return "memberPages/findPw";
+    }
+
+    @PostMapping("/findPw")
+    public @ResponseBody String findPw(@ModelAttribute MemberDTO memberDTO) {
+        MemberDTO findResult = memberService.findPw(memberDTO);
+        if (findResult != null) {
+            return findResult.getMemberPassword();
+        } else {
+            return "no";
         }
     }
 
@@ -88,7 +120,7 @@ public class MemberController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute MemberDTO memberDTO) {
-        System.out.println("controller memberDTO = " + memberDTO);
+//        System.out.println("controller memberDTO = " + memberDTO);
         boolean updateResult = memberService.update(memberDTO);
         if (updateResult) {
             return "redirect:/member/myPage";
@@ -117,7 +149,7 @@ public class MemberController {
 
     @PostMapping("/cash")
     public String cash(@ModelAttribute MemberDTO memberDTO) {
-        System.out.println("memberDTO = " + memberDTO);
+//        System.out.println("memberDTO = " + memberDTO);
         boolean updateResult = memberService.updateCash(memberDTO);
         if (updateResult) {
             return "redirect:/member/myPage";
@@ -135,6 +167,7 @@ public class MemberController {
     public String memberChatting() {
         return "memberPages/chatting";
     }
+
 }
 
 
