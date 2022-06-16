@@ -117,7 +117,7 @@ public class ItemController {
     @GetMapping("/tradeAll")
     public String tradeAll(Model model, @RequestParam(value = "page", required = false,
             defaultValue = "1") int page) {
-        List<OrderDTO> tradeList = orderService.findAll();
+        List<OrderDTO> tradeList = orderService.pagingList(page);
         PageDTO paging = orderService.paging(page);
         model.addAttribute("tradeList", tradeList);
         model.addAttribute("paging", paging);

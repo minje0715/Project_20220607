@@ -112,7 +112,7 @@
                 location.href = "/item/buyItem?id=" + itemPid + "&mid=" + buyMember + "&memberId=" + itemMemberId;
             } else {
                 alert("잔액이 부족합니다\n" +
-                    "충전페이지로 이동합니다");
+                    "충전하기 위한 페이지로 이동합니다");
                 location.href = "/member/myPage";
             }
         } else {

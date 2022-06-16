@@ -38,8 +38,8 @@
                 <td>${member.memberEmail}</td>
                 <td>${member.memberPhone}</td>
                 <td>${member.memberCash}</td>
-                <td><button class="btn btn-check"><a href="/member/updateForm">수정</a></button></td>
-                <td><button class="btn btn-danger"><a href="/member/delete?id=${member.mid}">회원탈퇴</a></button></td>
+                <td><button onclick="aa()" class="btn btn-primary">수정</button></td>
+                <td><button onclick="bb()" class="btn btn-danger">회원탈퇴</button></td>
             </tr>
     </table>
     <button onclick="openPopup()" class="btn btn-danger"  style="width: 120px; height: 50px;">캐쉬 충전</button>
@@ -56,6 +56,12 @@
         var windowStatus = 'width='+width+', height='+height+', left='+left+', top='+top+', scrollbars=no, status=no, resizable=yes, titlebar=yes';
 
         window.open("/member/cashForm", "캐쉬충전", windowStatus);
+    }
+    function aa() {
+        location.href = "/member/updateForm";
+    }
+    function bb() {
+       location.href = "/member/delete?id=${member.mid}";
     }
 </script>
 </html>
